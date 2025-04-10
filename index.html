@@ -1,231 +1,217 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta name=viewport content="width=800">
-  <meta name="generator" content="HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org">
-  <style type="text/css">
-
-    a {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chaitanya Kumar Dasari - Data Scientist & Analyst</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&display=swap" rel="stylesheet">
+  <style>
+    /* Reset some default styles for consistency */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Lato', Verdana, Helvetica, sans-serif;
+      background: #f7f7f7;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    header, section, footer {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    header {
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
       color: #1772d0;
-      text-decoration: none;
     }
-
-    a:focus,
-    a:hover {
+    header p {
+      font-size: 1.1em;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .contact-links a {
+      color: #1772d0;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+    .contact-links a:hover {
       color: #f09228;
+    }
+    .profile-img {
+      max-width: 160px;
+      border-radius: 50%;
+      border: 4px solid #f09228;
+      margin: 20px auto;
+      display: block;
+    }
+    section h2 {
+      color: rgb(244, 189, 184);
+      margin-bottom: 15px;
+      border-bottom: 2px solid #f09228;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+    .content ul {
+      list-style: disc inside;
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+    .project {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      background: #fafafa;
+      transition: transform 0.3s ease;
+    }
+    .project:hover {
+      transform: scale(1.02);
+    }
+    .project h3 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .project a {
+      color: #1a73e8;
+      font-weight: 700;
       text-decoration: none;
     }
-
-    body,
-    td,
-    th,
-    tr,
-    p,
-    a {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 14px
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #888;
     }
-
-    strong {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 14px;
+    /* Responsive adjustments */
+    @media (min-width: 768px) {
+      .two-column {
+        display: flex;
+        gap: 20px;
+      }
+      .two-column > div {
+        flex: 1;
+      }
+      header {
+        text-align: left;
+      }
     }
-
-    heading {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 22px;
-    }
-
-    papertitle {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 14px;
-      font-weight: 700
-    }
-
-    name {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 32px;
-    }
-
-    .profile {
-      border-radius: 50%;
-    }
-
-    .one {
-      width: 160px;
-      height: 160px;
-      max-width: 100%;
-      max-height: 100%;
-      position: relative;
-    }
-
-    .two {
-      width: 160px;
-      height: 160px;
-      position: absolute;
-      transition: opacity .2s ease-in-out;
-      -moz-transition: opacity .2s ease-in-out;
-      -webkit-transition: opacity .2s ease-in-out;
-    }
-
-    .fade {
-      transition: opacity .2s ease-in-out;
-      -moz-transition: opacity .2s ease-in-out;
-      -webkit-transition: opacity .2s ease-in-out;
-    }
-
-    span.highlight {
-      background-color: #ffffd0;
-    }
-   </style>
-  <!-- <link rel="icon" type="image/png" href="images/seal_icon.png"> -->
-  <title> Chaitanya Kumar Dasari </title>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114832734-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-114832734-1');
-</script>
-  <meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  </style>
+  <!-- Google Analytics Script -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114832734-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-114832734-1');
+  </script>
 </head>
-
 <body>
-  <table width="800" border="0" align="center" cellspacing="0" cellpadding="0">
-    <tr>
-      <td>
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-          <tr>
-            <td width="67%" valign="middle">
-              <p align="center">
-                <name> Chaitanya Kumar Dasari</name>
-        </p>
-              <p>
-               Results-oriented Data Analyst and Data Scientist with 5 years of experience specializing in data analytics, machine learning, and predictive modeling. Proven expertise in Python, SQL, and cloud platforms like Azure and GCP, coupled with a strong ability to perform Exploratory Data Analysis (EDA) and implement advanced analytical techniques for business optimization. Demonstrated success in developing scalable models using libraries such as Pandas and Scikit-learn, while also designing interactive dashboards with Tableau and Power BI to drive data-informed decision-making. Committed to leveraging deep learning frameworks for innovative AI applications across diverse industries.
-	      </p>
-              <p align=center>
-                <a href="mailto:chaitanyakumar435@outlook.com">Email</a> &nbsp/&nbsp
-                <a href="https://drive.google.com/file/d/1XzoWPW6APl035AKM2O7n7AzEr5HQf31s/view?usp=sharing">CV</a> &nbsp/&nbsp
-                <a href="https://www.github.com/chaitanyakumar-d">Github</a> &nbsp/&nbsp
-                <a href="https://www.linkedin.com/in/chaitanyakumar435/"> LinkedIn </a> &nbsp/&nbsp
-                <a href="https://medium.com/@chaitanyakumar435_23295">Blog</a> &nbsp/&nbsp
-		<a href="https://www.kaggle.com/chaitanyakumardasari">Kaggle</a>
-              </p>
-            </td>
-            <td width="33%">
-              <img class="profile" src="Profile.png">
-            </td>
-          </tr>
-        </table>
-	<table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-          <tr>
-            <td width="100%" valign="middle" style="margin: 20px; padding: 20px; text-align: justify; max-width: 800px;">
-      <h2 style="color:rgb(244, 189, 184);">Professional Summary</h2>
-	<ul>
-  <li>Highly skilled and results-driven Data Analyst and Data Scientist with 5 years of experience in data analytics, machine learning, and predictive modeling.</li>
-  <li>Expertise in utilizing advanced analytical techniques to extract meaningful insights, optimize business strategies, and drive data-informed decision-making.</li>
-  <li>Proficient in Python, SQL, and cloud platforms like Azure, and GCP, with extensive experience in data acquisition, validation, visualization, and predictive modeling.</li>
-  <li>Hands-on experience with libraries such as Pandas, NumPy, Scikit-learn, and TensorFlow to develop scalable and efficient models.</li>
-  <li>Adept at performing Exploratory Data Analysis (EDA) and implementing supervised and unsupervised learning techniques.</li>
-  <li>Strong understanding of statistical methods, dimensionality reduction (PCA), regression techniques (linear, logistic, polynomial, ridge, and lasso), classification models (random forest, SVM, decision trees), and clustering algorithms (K-means, hierarchical).</li>
-  <li>Experience with NLP for text analysis and deep learning frameworks such as TensorFlow and Keras.</li>
-  <li>Knowledgeable in neural networks, deep learning models, and reinforcement learning for advanced AI applications.</li>
-  <li>Expertise in business intelligence tools like Tableau and Power BI, designing interactive dashboards and reports by connecting to various data sources such as SQL databases, AWS Redshift, and Snowflake.</li>
-  <li>Successfully implemented data warehousing solutions and worked on ETL processes for data integration and transformation.</li>
-  <li>Experience in customer segmentation, fraud detection, churn prediction, and demand forecasting projects across industries.</li>
-  <li>Strong analytical skills and ability to communicate findings effectively to stakeholders, driving business growth.</li>
-  <li>Passionate about learning and applying cutting-edge data science techniques, continuously exploring advancements in AI, deep learning, and network-based learning models.</li>
-</ul>
 
-    </td>
-  </tr>
-	</table>
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-  <tr>
-    <td width="100%" valign="middle" style="margin: 20px; padding: 20px; text-align: justify; max-width: 800px;">
-      <h2 style="color:rgb(244, 189, 184);">Technical Skills</h2>
-      
-                
-               
- <ul>
-  <li><strong>Programming Languages:</strong> Python (proficient), SQL, Java SE (familiar), C (familiar)</li>
-  <li><strong>Machine Learning Frameworks:</strong> Scikit-learn, TensorFlow, Keras, XGBoost, PyTorch, MLlib</li>
-  <li><strong>Deep Learning & AI:</strong> Neural Networks, Deep Learning Models, Reinforcement Learning</li>
-  <li><strong>Data Tools & Technologies:</strong> Pandas, NumPy, REST APIs, Apache Spark, Databricks</li>
-  <li><strong>Databases:</strong> MySQL, AWS Redshift, Snowflake, SQL Databases</li>
-  <li><strong>ETL & Data Integration:</strong> ETL Pipelines, Data Transformation, Data Integration & Automation</li>
-  <li><strong>Statistical & Analytical Tools:</strong> Excel (Analysis ToolPak), ANOVA, Regression Analysis, PCA</li>
-  <li><strong>Cloud Platforms:</strong> Azure, AWS (Basic)</li>
-  <li><strong>Visualization Tools:</strong> Matplotlib, Seaborn, Tableau, Power BI</li>
-  <li><strong>Data Management:</strong> Data Cleaning, Preprocessing, Feature Engineering, Dimensionality Reduction</li>
-  <li><strong>Business Intelligence:</strong> Tableau Dashboards, Power BI Reports, Interactive Data Visualizations</li>
-  <li><strong>Other:</strong> Version Control (Git, GitHub), Agile Development Methodologies</li>
-</ul>
+  <!-- Header -->
+  <header>
+    <img src="Profile.png" alt="Profile of Chaitanya Kumar Dasari" class="profile-img">
+    <h1>Chaitanya Kumar Dasari</h1>
+    <p>
+      Results-oriented Data Analyst and Data Scientist with 5 years of experience specializing in data analytics, machine learning, and predictive modeling.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:chaitanyakumar435@outlook.com">Email</a> |
+      <a href="https://drive.google.com/file/d/1XzoWPW6APl035AKM2O7n7AzEr5HQf31s/view?usp=sharing" target="_blank">CV</a> |
+      <a href="https://www.github.com/chaitanyakumar-d" target="_blank">Github</a> |
+      <a href="https://www.linkedin.com/in/chaitanyakumar435/" target="_blank">LinkedIn</a> |
+      <a href="https://medium.com/@chaitanyakumar435_23295" target="_blank">Blog</a> |
+      <a href="https://www.kaggle.com/chaitanyakumardasari" target="_blank">Kaggle</a>
+    </div>
+  </header>
 
-	 </td>
-  </tr>
-</table>
+  <!-- Professional Summary -->
+  <section>
+    <h2>Professional Summary</h2>
+    <p>
+      Highly skilled and results-driven Data Analyst and Data Scientist with 5 years of experience in data analytics, machine learning, and predictive modeling. Adept at utilizing advanced analytical techniques to extract meaningful insights, optimize business strategies, and drive data-informed decision-making. Proficient in Python, SQL, and cloud platforms like Azure and GCP with extensive experience in data acquisition, validation, and visualization.
+    </p>
+    <ul>
+      <li>Expert in Python, SQL, cloud platforms (Azure, GCP), and libraries such as Pandas, Scikit-learn, and TensorFlow.</li>
+      <li>Adept in EDA, supervised/unsupervised learning, and model scalability.</li>
+      <li>Skilled in developing interactive dashboards using Tableau and Power BI.</li>
+      <li>Experienced in building solutions for customer segmentation, fraud detection, churn prediction, and demand forecasting.</li>
+    </ul>
+  </section>
 
-
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-  <tr>
-    <td width="100%" valign="middle" style="margin: 20px; padding: 20px; text-align: justify; max-width: 800px;">
-      <h2 style="color:rgb(244, 189, 184);">Professional Experience</h2>
-	<p>
-        <li><strong>Sr. Data Scientist at <a href="https://www.pipersandler.com/"> Piper Sandler (Contract Role) </a>, USA </strong> - April 2024 &#45; Present</li>
-      </p>
-      <p>
-        <li><strong>Data Scientist at <a href="https://www.infosys.com/">Infosys</a>, Hyderabad, TS</strong> - June 2022 &#45; August 2023</li>
-      </p>
-	<p>
-        <li><strong>Data Analyst & Data Scientist at <a href="https://www.zaubacorp.com/TWILIGHT-SOFTWARE-SOLUTIONS-PRIVATE-LIMITED-U72200TG2008PTC057722">Twilight IT Solutions</a>, Hyderabad, TS</strong> - March 2020 &#45; June 2022</li>
-      </p>
-     
-    </td>
-  </tr>
-</table>      
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-  <tr>
-    <td width="100%" valign="middle" style="margin: 20px; padding: 20px; text-align: justify; max-width: 800px;">
-      <h2 style="color:rgb(244, 189, 184);">Projects</h2>
-	    <div style="border: 1px solid #ddd; padding: 20px; border-radius: 10px; margin-top: 20px;">
-        <h3 style="color:#333;">🧠 ChatGPT NLP Analyzer</h3>
-        <p><strong>Technologies:</strong> OpenAI API, Streamlit, Python, NLP, GitHub, dotenv, Data Analysis</p>
-        <p>
-          Developed a web-based Natural Language Processing (NLP) tool using OpenAI's GPT-3.5 API. The app allows users to perform:
-        </p>
+  <!-- Technical Skills -->
+  <section>
+    <h2>Technical Skills</h2>
+    <div class="two-column">
+      <div>
         <ul>
-          <li>Text Summarization</li>
-          <li>Sentiment Analysis</li>
-          <li>Keyword Extraction</li>
-          <li>Question-Answering from raw text inputs</li>
+          <li><strong>Programming:</strong> Python (proficient), SQL, Java SE (familiar), C (familiar)</li>
+          <li><strong>Machine Learning:</strong> Scikit-learn, TensorFlow, Keras, XGBoost, PyTorch, MLlib</li>
+          <li><strong>Deep Learning & AI:</strong> Neural Networks, Deep Learning Models, Reinforcement Learning</li>
+          <li><strong>Data Tools:</strong> Pandas, NumPy, REST APIs, Apache Spark, Databricks</li>
         </ul>
-        <p><strong>Features & Contributions:</strong></p>
-        <ul>
-          <li>Integrated OpenAI SDK (v1.x) with secure API key handling via <code>.env</code> files</li>
-          <li>Built an interactive UI using <strong>Streamlit</strong></li>
-          <li>Modular backend logic in custom Python scripts</li>
-          <li>Handled errors like rate limits and API exceptions gracefully</li>
-          <li>Version-controlled on GitHub for transparency and collaboration</li>
-        </ul>
-        <p>
-          🔗 <strong>GitHub:</strong>
-          <a href="https://github.com/chaitanyakumar-d/chatgpt-nlp-analyzer" target="_blank" style="color:#1a73e8;">
-            github.com/chaitanyakumar-d/chatgpt-nlp-analyzer
-          </a>
-        </p>
       </div>
-	    
-	
-     
-    </td>
-  </tr>
-</table>      
-	
-               
-</body>
+      <div>
+        <ul>
+          <li><strong>Databases:</strong> MySQL, AWS Redshift, Snowflake, SQL Databases</li>
+          <li><strong>ETL & Integration:</strong> ETL Pipelines, Data Transformation, Automation</li>
+          <li><strong>Analytics:</strong> Excel (Analysis ToolPak), ANOVA, Regression, PCA</li>
+          <li><strong>Cloud:</strong> Azure, AWS (Basic)</li>
+          <li><strong>Visualization:</strong> Matplotlib, Seaborn, Tableau, Power BI</li>
+          <li><strong>Others:</strong> Version Control (Git, GitHub), Agile Methodologies</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
+  <!-- Professional Experience -->
+  <section>
+    <h2>Professional Experience</h2>
+    <ul>
+      <li><strong>Sr. Data Scientist (Contract) at <a href="https://www.pipersandler.com/" target="_blank">Piper Sandler, USA</a></strong> – April 2024 to Present</li>
+      <li><strong>Data Scientist at <a href="https://www.infosys.com/" target="_blank">Infosys, Hyderabad, TS</a></strong> – June 2022 to August 2023</li>
+      <li><strong>Data Analyst & Data Scientist at <a href="https://www.zaubacorp.com/TWILIGHT-SOFTWARE-SOLUTIONS-PRIVATE-LIMITED-U72200TG2008PTC057722" target="_blank">Twilight IT Solutions, Hyderabad, TS</a></strong> – March 2020 to June 2022</li>
+    </ul>
+  </section>
+
+  <!-- Projects -->
+  <section>
+    <h2>Projects</h2>
+    <div class="project">
+      <h3>🧠 ChatGPT NLP Analyzer</h3>
+      <p><strong>Technologies:</strong> OpenAI API, Streamlit, Python, NLP, GitHub, dotenv, Data Analysis</p>
+      <p>
+        Developed a web-based NLP tool that allows users to perform text summarization, sentiment analysis, keyword extraction, and question-answering on raw text inputs.
+      </p>
+      <ul>
+        <li>Integrated OpenAI SDK with secure API key handling using environment variables.</li>
+        <li>Built an interactive UI with Streamlit and modularized backend logic with Python.</li>
+        <li>Implemented robust error handling for rate limits and API exceptions.</li>
+        <li>Maintained full version control on GitHub for collaboration and transparency.</li>
+      </ul>
+      <p>
+        🔗 <strong>GitHub:</strong> <a href="https://github.com/chaitanyakumar-d/chatgpt-nlp-analyzer" target="_blank">github.com/chaitanyakumar-d/chatgpt-nlp-analyzer</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2024 Chaitanya Kumar Dasari. All rights reserved.</p>
+  </footer>
+
+</body>
 </html>
