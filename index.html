@@ -3,80 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chaitanya Dasari - Data Scientist & ML Engineer</title>
+    <title>Chaitanya Dasari | Data Scientist & ML Engineer</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">Chaitanya Dasari</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">CD</div>
+            <div class="nav-links">
+                <a href="#home" class="active">Home</a>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="container">
-            <div class="row align-items-center min-vh-100">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h1 class="display-4 fw-bold mb-3">Chaitanya Dasari</h1>
-                    <h2 class="h3 mb-4">Data Scientist & Machine Learning Engineer</h2>
-                    <p class="lead mb-4">Specializing in AI/ML, LLMs, and Predictive Analytics</p>
-                    <div class="d-flex justify-content-center gap-3">
-                        <a href="https://linkedin.com/in/chaitanyakumard" class="btn btn-primary" target="_blank">LinkedIn</a>
-                        <a href="https://github.com/chaitanyakumar-d" class="btn btn-dark" target="_blank">GitHub</a>
-                        <a href="#contact" class="btn btn-outline-primary">Contact Me</a>
-                    </div>
+    <section id="home" class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <div class="hero-text">
+                <h1>Chaitanya Dasari</h1>
+                <div class="typed-container">
+                    <span class="typed-text"></span><span class="cursor">&nbsp;</span>
+                </div>
+                <p>Crafting AI solutions that drive business value</p>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn primary">View Projects</a>
+                    <a href="#contact" class="btn secondary">Contact Me</a>
                 </div>
             </div>
+            <div class="social-links">
+                <a href="https://github.com/chaitanyakumar-d" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/chaitanyakumard" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:chaitanyadasari09@outlook.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+            <p>Scroll Down</p>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-5">About Me</h2>
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <p class="lead">Data Scientist with 5 years of experience in data mining, analytics, machine learning, and predictive modeling across financial, healthcare, and telecom domains. Currently working at Piper Sandler, focusing on AI-driven solutions and large language models.</p>
-                    <div class="row mt-4">
-                        <div class="col-md-6">
-                            <h3 class="h5">Education</h3>
-                            <ul class="list-unstyled">
-                                <li class="mb-3">
-                                    <strong>M.S. in Data Analytics</strong><br>
-                                    Concordia University, St. Paul<br>
-                                    2023 - 2024 | GPA: 3.91/4.00
-                                </li>
-                                <li>
-                                    <strong>B.Sc.</strong><br>
-                                    Nizam College, Hyderabad<br>
-                                    2017 - 2020 | GPA: 8.22/10.00
-                                </li>
-                            </ul>
+    <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Data Scientist with 5 years of experience specializing in AI/ML solutions and predictive analytics. Currently at Piper Sandler, focusing on developing cutting-edge AI applications including LLMs and autonomous trading systems.</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h3>5+</h3>
+                            <p>Years Experience</p>
                         </div>
-                        <div class="col-md-6">
-                            <h3 class="h5">Certifications</h3>
-                            <ul class="list-unstyled">
-                                <li class="mb-2">Machine Learning - Stanford University (Coursera)</li>
-                                <li class="mb-2">Data Science and Cloud Computing - Infosys</li>
-                                <li>Data Analytics - Cisco</li>
-                            </ul>
+                        <div class="stat-item">
+                            <h3>50%</h3>
+                            <p>Efficiency Boost</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>12%</h3>
+                            <p>Readmission Reduction</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="education-certs">
+                    <div class="edu-section">
+                        <h3>Education</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h4>M.S. in Data Analytics</h4>
+                                <p>Concordia University, St. Paul</p>
+                                <span>2023 - 2024 | GPA: 3.91/4.00</span>
+                            </div>
+                            <div class="timeline-item">
+                                <h4>B.Sc.</h4>
+                                <p>Nizam College, Hyderabad</p>
+                                <span>2017 - 2020 | GPA: 8.22/10.00</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,103 +99,101 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5">Professional Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <h3>Senior Data Scientist</h3>
-                    <p class="text-muted">Piper Sandler | April 2024 - Present</p>
-                    <ul>
-                        <li>Deployed LLM-powered research assistant (GPT-4 + RAG) reducing analyst turnaround time by 50%</li>
-                        <li>Implemented autonomous trading bots for market anomaly monitoring</li>
-                        <li>Integrated generative AI (DALL·E 2) into investor pitch decks</li>
-                        <li>Led end-to-end data science initiatives in financial analytics</li>
-                    </ul>
+    <section id="experience" class="experience">
+        <div class="container" data-aos="fade-up">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-timeline">
+                <div class="exp-item" data-aos="fade-right">
+                    <div class="exp-content">
+                        <h3>Senior Data Scientist</h3>
+                        <p class="company">Piper Sandler</p>
+                        <p class="period">April 2024 - Present</p>
+                        <ul class="achievements">
+                            <li>Deployed LLM-powered research assistant reducing turnaround by 50%</li>
+                            <li>Implemented autonomous trading bots for market monitoring</li>
+                            <li>Integrated DALL·E 2 for automated visual content generation</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="timeline-item">
-                    <h3>Data Scientist / Machine Learning Engineer</h3>
-                    <p class="text-muted">Infosys - CVS Aetna | Feb 2022 - Aug 2023</p>
-                    <ul>
-                        <li>Developed prototype agent-based orchestration systems</li>
-                        <li>Reduced patient readmissions by 12% through K-Means clustering</li>
-                        <li>Achieved ~85% accuracy in high-cost claimant prediction</li>
-                    </ul>
-                </div>
-                <div class="timeline-item">
-                    <h3>Data Scientist / Machine Learning Engineer</h3>
-                    <p class="text-muted">Infosys - Charles Schwab | Jun 2022 - Jan 2023</p>
-                    <ul>
-                        <li>Designed early-stage agentic automation systems</li>
-                        <li>Developed LLM-based chatbot workflows</li>
-                        <li>Built synthetic data generators using GANs</li>
-                    </ul>
+                <div class="exp-item" data-aos="fade-left">
+                    <div class="exp-content">
+                        <h3>Data Scientist / ML Engineer</h3>
+                        <p class="company">Infosys - CVS Aetna</p>
+                        <p class="period">Feb 2022 - Aug 2023</p>
+                        <ul class="achievements">
+                            <li>Reduced patient readmissions by 12% through ML clustering</li>
+                            <li>Achieved 85% accuracy in cost prediction models</li>
+                            <li>Built HIPAA-compliant ETL pipelines</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-5">Technical Skills</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h3 class="h5 card-title">AI & Machine Learning</h3>
-                            <ul class="list-unstyled">
-                                <li>GPT-4, Claude, LLaMA</li>
-                                <li>TensorFlow, PyTorch</li>
-                                <li>Scikit-learn, XGBoost</li>
-                                <li>LangChain, DALL·E 2</li>
-                            </ul>
-                        </div>
+    <section id="skills" class="skills">
+        <div class="container" data-aos="fade-up">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category" data-aos="zoom-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-brain"></i>
                     </div>
+                    <h3>AI & ML</h3>
+                    <ul>
+                        <li>GPT-4 & LLMs</li>
+                        <li>TensorFlow & PyTorch</li>
+                        <li>Scikit-learn</li>
+                        <li>LangChain</li>
+                    </ul>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h3 class="h5 card-title">Programming & Data</h3>
-                            <ul class="list-unstyled">
-                                <li>Python, SQL, Java, C</li>
-                                <li>Pandas, NumPy, Spark</li>
-                                <li>MySQL, Redshift, Snowflake</li>
-                                <li>REST APIs, ETL Pipelines</li>
-                            </ul>
-                        </div>
+                <div class="skill-category" data-aos="zoom-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
                     </div>
+                    <h3>Programming</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>SQL</li>
+                        <li>Java</li>
+                        <li>C</li>
+                    </ul>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h3 class="h5 card-title">Cloud & Tools</h3>
-                            <ul class="list-unstyled">
-                                <li>Azure, GCP, AWS</li>
-                                <li>Tableau, Power BI</li>
-                                <li>Git, GitHub</li>
-                                <li>Databricks</li>
-                            </ul>
-                        </div>
+                <div class="skill-category" data-aos="zoom-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-cloud"></i>
                     </div>
+                    <h3>Cloud & Tools</h3>
+                    <ul>
+                        <li>Azure</li>
+                        <li>AWS</li>
+                        <li>GCP</li>
+                        <li>Databricks</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5">Featured Projects</h2>
-            <div class="row">
-                <div class="col-lg-6 mx-auto">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h3 class="h5 card-title">ChatGPT NLP Analyzer</h3>
-                            <p class="card-text">A web-based Natural Language Processing tool using OpenAI's GPT-3.5 API for text summarization, sentiment analysis, and keyword extraction.</p>
-                            <p class="card-text"><small class="text-muted">Tech Stack: OpenAI API, Streamlit, Python, NLP</small></p>
-                            <a href="https://github.com/chaitanyakumar-d/chatgpt-nlp-analyzer" class="btn btn-primary" target="_blank">View Project</a>
+    <section id="projects" class="projects">
+        <div class="container" data-aos="fade-up">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card" data-aos="flip-left">
+                    <div class="project-content">
+                        <h3>ChatGPT NLP Analyzer</h3>
+                        <p>A sophisticated web-based NLP tool leveraging OpenAI's GPT-3.5 API for text analysis and processing.</p>
+                        <div class="tech-stack">
+                            <span>OpenAI API</span>
+                            <span>Python</span>
+                            <span>Streamlit</span>
+                            <span>NLP</span>
                         </div>
+                        <a href="https://github.com/chaitanyakumar-d/chatgpt-nlp-analyzer" class="btn primary" target="_blank">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -189,38 +201,38 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-5">Contact Me</h2>
-            <div class="row">
-                <div class="col-lg-6 mx-auto text-center">
-                    <p class="lead mb-4">I'm currently open to new opportunities in Data Science & ML Engineering.</p>
-                    <div class="d-flex justify-content-center gap-4">
-                        <a href="mailto:chaitanyadasari09@outlook.com" class="contact-link">
-                            <i class="fas fa-envelope fa-2x"></i>
-                            <span>Email</span>
-                        </a>
-                        <a href="https://linkedin.com/in/chaitanyakumard" class="contact-link" target="_blank">
-                            <i class="fab fa-linkedin fa-2x"></i>
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href="https://github.com/chaitanyakumar-d" class="contact-link" target="_blank">
-                            <i class="fab fa-github fa-2x"></i>
-                            <span>GitHub</span>
-                        </a>
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <a href="mailto:chaitanyadasari09@outlook.com">chaitanyadasari09@outlook.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Location</h3>
+                        <p>Eden Prairie, MN</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-briefcase"></i>
+                        <h3>Work Status</h3>
+                        <p>Open to opportunities (F-1 OPT)</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-dark text-white py-4">
-        <div class="container text-center">
-            <p class="mb-0">© 2024 Chaitanya Dasari. All rights reserved.</p>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Chaitanya Dasari. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
