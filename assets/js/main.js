@@ -130,8 +130,10 @@ document.addEventListener("DOMContentLoaded", function() {
         history: [],
         maxHistory: 8,
         lastBestId: null,
-        debug: false
+        debug: false,
+        lastDebugScores: null
     };
+    let lastFocusBeforeOpen = null;
 
     // Persistence helpers
     const STORAGE_KEY = 'chat_assistant_state_v1';
@@ -343,61 +345,83 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function openChat(){ if (!panel) return; panel.classList.add('active'); panel.setAttribute('aria-hidden','false'); if (input) input.focus(); }
     function closeChat(){ if (!panel) return; panel.classList.remove('active'); panel.setAttribute('aria-hidden','true'); }
+    function openChatAccessible(){ lastFocusBeforeOpen = document.activeElement; openChat(); }
+    function closeChatAccessible(){ closeChat(); if (lastFocusBeforeOpen && typeof lastFocusBeforeOpen.focus==='function') lastFocusBeforeOpen.focus(); else if (launcher) launcher.focus(); }
 
-    if (launcher) launcher.addEventListener('click', () => { const isOpen = panel.classList.contains('active'); if (isOpen) closeChat(); else { openChat(); if (!messagesEl.dataset.boot){ addMessage('Hi! Ask me about Chaitanya\'s experience, skills, LLM work, or education.'); messagesEl.dataset.boot='1'; } } });
-    if (closeBtn) closeBtn.addEventListener('click', closeChat);
+    if (launcher) launcher.addEventListener('click', () => { const isOpen = panel.classList.contains('active'); if (isOpen) closeChatAccessible(); else { openChatAccessible(); if (!messagesEl.dataset.boot){ addMessage('Hi! Ask me about Chaitanya\'s experience, skills, LLM work, or education.'); messagesEl.dataset.boot='1'; } } });
+    if (closeBtn) closeBtn.addEventListener('click', closeChatAccessible);
+    // Utilities for export and summarization
+    function exportTranscript(){
+        const transcript = Array.from(messagesEl.querySelectorAll('.chat-msg')).map(m=>({sender: m.classList.contains('user')?'user':'bot', text: m.textContent}));
+        const payload = { transcript, lastBestId: chatState.lastBestId, ts: Date.now() };
+        const blob = new Blob([JSON.stringify(payload,null,2)], {type:'application/json'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a'); a.href=url; a.download='chat_transcript.json'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url), 2000);
+    }
+    function maybeSummarize(){
+        const USER_THRESHOLD = 12;
+        if (chatState.history.length < USER_THRESHOLD) return;
+        const tagCounts = new Map();
+        (chatState.lastDebugScores||[]).forEach(s => s.item.tags.slice(0,3).forEach(t=>tagCounts.set(t,(tagCounts.get(t)||0)+1)));
+        const topTags = Array.from(tagCounts.entries()).sort((a,b)=>b[1]-a[1]).slice(0,6).map(e=>e[0]);
+        const summary = 'Summary so far: ' + (topTags.length? topTags.join(', '):'multiple topics') + '. Context compressed.';
+        chatState.history = chatState.history.slice(-6);
+        addMessage(summary, 'bot');
+        saveState();
+    }
+    // Embedding override hook
+    window.ChatAssistant = window.ChatAssistant || {};
+    window.ChatAssistant.injectEmbeddings = function(map){
+        kb.forEach(item => { if (map[item.id]) item.vector = map[item.id]; });
+    };
+    window.ChatAssistant.export = exportTranscript;
+
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const q = input.value.trim();
             if (!q) return;
-            if (q === '/debug') {
-                chatState.debug = !chatState.debug;
-                addMessage('Debug mode ' + (chatState.debug ? 'enabled' : 'disabled') + '.', 'bot');
-                input.value='';
-                return;
-            }
-            if (q === '/reset') {
-                chatState.history = [];
-                chatState.lastBestId = null;
-                saveState();
-                addMessage('Chat context cleared.', 'bot');
-                input.value='';
-                return;
-            }
+            if (q === '/debug') { chatState.debug = !chatState.debug; addMessage('Debug mode ' + (chatState.debug?'enabled':'disabled') + '.', 'bot'); input.value=''; return; }
+            if (q === '/reset') { chatState.history=[]; chatState.lastBestId=null; saveState(); addMessage('Chat context cleared.', 'bot'); input.value=''; return; }
+            if (q === '/export') { exportTranscript(); input.value=''; return; }
+            if (q === '/why') {
+                if (!chatState.lastDebugScores){ addMessage('No prior answer context available.', 'bot'); input.value=''; return; }
+                const explain = chatState.lastDebugScores.map(s=>`#${s.item.id} h=${s.h.toFixed(2)} c=${s.c.toFixed(2)} total=${s.combined.toFixed(2)}`).join(' | ');
+                addMessage('Scoring: ' + explain, 'bot'); input.value=''; return; }
             addMessage(q, 'user');
-            // add to history
-            chatState.history.push(q);
-            if (chatState.history.length > chatState.maxHistory) chatState.history.shift();
-            saveState();
-            input.value='';
-            const typing = document.createElement('div');
-            typing.className='chat-typing';
-            typing.textContent='Thinking...';
-            messagesEl.appendChild(typing); messagesEl.scrollTop = messagesEl.scrollHeight;
+            chatState.history.push(q); if (chatState.history.length > chatState.maxHistory) chatState.history.shift(); saveState(); input.value='';
+            const typing = document.createElement('div'); typing.className='chat-typing'; typing.textContent='Thinking...'; messagesEl.appendChild(typing); messagesEl.scrollTop = messagesEl.scrollHeight;
             setTimeout(()=>{
                 typing.remove();
                 const ans = answerQuery(q);
                 const preMsgCount = messagesEl.children.length;
                 streamAnswer(ans.text);
-                // After streaming finishes, schedule highlight (approx by length)
                 const estTime = Math.min(2000, ans.text.length * 6);
-                setTimeout(()=>{
-                    const newMsg = messagesEl.children[preMsgCount];
-                    if (newMsg) highlightTerms(newMsg, (ans.debugScores||[]).flatMap(s=>s.item.tags));
-                }, estTime);
+                setTimeout(()=>{ const newMsg = messagesEl.children[preMsgCount]; if (newMsg) highlightTerms(newMsg, (ans.debugScores||[]).flatMap(s=>s.item.tags)); }, estTime);
                 if (chatState.debug && ans.debugScores){
                     const dbg = ans.debugScores.map(s=>`#${s.item.id} h:${s.h.toFixed(2)} c:${s.c.toFixed(2)} total:${s.combined.toFixed(2)}`).join(' | ');
                     addMessage('[debug] ' + dbg, 'bot');
                 }
-                if (ans.debugScores) renderSuggestions(ans.debugScores);
+                if (ans.debugScores){ chatState.lastDebugScores = ans.debugScores; renderSuggestions(ans.debugScores); }
                 chatState.lastBestId && saveState();
+                maybeSummarize();
             }, 450);
         });
     }
 
     // Close on ESC
-    document.addEventListener('keydown', (e)=>{ if (e.key==='Escape' && panel.classList.contains('active')) closeChat(); });
+    document.addEventListener('keydown', (e)=>{ if (e.key==='Escape' && panel.classList.contains('active')) closeChatAccessible(); });
+
+    // Chip keyboard navigation
+    messagesEl.addEventListener('keydown', (e)=>{
+        if (!e.target.classList.contains('chat-suggestion')) return;
+        const chips = Array.from(messagesEl.querySelectorAll('.chat-suggestion'));
+        const idx = chips.indexOf(e.target);
+        if (e.key==='ArrowRight'){ e.preventDefault(); chips[(idx+1)%chips.length].focus(); }
+        else if (e.key==='ArrowLeft'){ e.preventDefault(); chips[(idx-1+chips.length)%chips.length].focus(); }
+        else if (e.key==='Enter'){ e.preventDefault(); e.target.click(); }
+        else if (e.key==='Escape'){ input.focus(); }
+    });
 });
 
 // Smooth Scrolling
