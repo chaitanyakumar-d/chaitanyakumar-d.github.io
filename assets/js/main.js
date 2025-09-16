@@ -119,6 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // AI Chat Assistant (Rule-based resume Q&A)
     const launcher = document.getElementById('chatLauncher');
+    const footerChatHint = document.getElementById('footerChatHint');
     const panel = document.getElementById('chatPanel');
     const closeBtn = document.getElementById('chatClose');
     const form = document.getElementById('chatForm');
@@ -134,6 +135,18 @@ document.addEventListener("DOMContentLoaded", function() {
         lastDebugScores: null
     };
     let lastFocusBeforeOpen = null;
+    if (footerChatHint) {
+        footerChatHint.addEventListener('click', () => {
+            if (!panel.classList.contains('active')) {
+                lastFocusBeforeOpen = footerChatHint;
+                panel.classList.add('active');
+                panel.setAttribute('aria-hidden','false');
+                setTimeout(() => input && input.focus(), 20);
+            } else if (input) {
+                input.focus();
+            }
+        });
+    }
 
     // Persistence helpers
     const STORAGE_KEY = 'chat_assistant_state_v1';
