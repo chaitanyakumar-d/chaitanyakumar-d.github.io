@@ -153,18 +153,44 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function answerQuery(q) {
         const nq = normalize(q);
-        let best = null; let score = 0;
+        const words = nq.split(/[^a-z0-9%]+/).filter(Boolean);
+        let best = null; let bestScore = 0;
+
+        function scoreItem(item){
+            let score = 0;
+            // tag matches (weighted)
+            item.tags.forEach(t => { if (nq.includes(t)) score += 3; });
+            // word overlap
+            words.forEach(w => {
+                // exact tag / substring overlap
+                if (item.tags.includes(w)) score += 2;
+                else if (item.answer.toLowerCase().includes(w)) score += 1;
+                else if (w.length > 4) {
+                    // partial (prefix) match
+                    const partial = item.tags.find(t => t.startsWith(w.slice(0,4)));
+                    if (partial) score += 1;
+                }
+            });
+            return score;
+        }
+
         kb.forEach(item => {
-            let s = 0;
-            item.tags.forEach(t => { if (nq.includes(t)) s++; });
-            if (s > score) { score = s; best = item; }
+            const s = scoreItem(item);
+            if (s > bestScore) { bestScore = s; best = item; }
         });
-        if (best && score > 0) return best.answer;
-        // fallback heuristic
-        if (/experience|work|role/.test(nq)) return 'I can summarize roles: ask about Piper Sandler, CVS Aetna, Charles Schwab, or Twilight for specifics.';
-        if (/project|portfolio/.test(nq)) return 'Featured project: ChatGPT NLP Analyzer leveraging OpenAI API, Streamlit, and NLP techniques.';
+
+        const maxPossible = words.length * 6 + 15; // loose upper bound for normalization
+        const confidence = bestScore / Math.max(10, maxPossible);
+
+        if (best && confidence >= 0.18) return best.answer;
+
+        // targeted heuristic fallbacks
+        if (/experience|work|role/.test(nq)) return 'Ask about specific roles: Piper Sandler, CVS Aetna, Charles Schwab, Twilight.';
+        if (/project|portfolio/.test(nq)) return 'Project: ChatGPT NLP Analyzer (OpenAI API, Streamlit, NLP).';
         if (/skill|tech|stack|tool/.test(nq)) return kb.find(k=>k.tags.includes('skills')).answer;
-        return 'Could you rephrase? You can ask about: Piper Sandler, CVS Aetna, Charles Schwab, skills, education, LLM work, or contact.';
+        if (/education|degree/.test(nq)) return kb.find(k=>k.tags.includes('education')).answer;
+
+        return 'Not sure yet. Try: "Piper Sandler", "CVS Aetna", "LLM work", "skills", or "education".';
     }
 
     function openChat(){ if (!panel) return; panel.classList.add('active'); panel.setAttribute('aria-hidden','false'); if (input) input.focus(); }
