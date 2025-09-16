@@ -4,16 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chaitanya Dasari | Data Scientist & ML Engineer</title>
+    <meta name="description" content="Portfolio of Chaitanya Dasari — Data Scientist & ML Engineer specializing in AI, ML, and LLMs. Explore experience, skills, and featured projects.">
+    <link rel="canonical" href="https://chaitanyakumar-d.github.io/">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+    <meta property="og:title" content="Chaitanya Dasari | Data Scientist & ML Engineer">
+    <meta property="og:description" content="AI, ML, and LLM-focused portfolio — experience, skills, and projects.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chaitanyakumar-d.github.io/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Chaitanya Dasari | Data Scientist & ML Engineer">
+    <meta name="twitter:description" content="AI, ML, and LLM-focused portfolio — experience, skills, and projects.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+    <a class="skip-link" href="#home">Skip to content</a>
     <!-- Navbar -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
         <div class="nav-content">
             <div class="logo">CD</div>
-            <div class="nav-links">
+            <div class="nav-links" id="primary-navigation">
                 <a href="#home" class="active">Home</a>
                 <a href="#about">About</a>
                 <a href="#experience">Experience</a>
@@ -21,10 +36,18 @@
                 <a href="#projects">Projects</a>
                 <a href="#contact">Contact</a>
             </div>
-            <div class="menu-btn">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-actions">
+                <button class="menu-btn" aria-label="Toggle navigation menu" aria-controls="primary-navigation" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="style-toggle" aria-label="Toggle style" title="Toggle style">
+                    <i class="fas fa-magic"></i>
+                </button>
             </div>
         </div>
     </nav>
@@ -44,8 +67,8 @@
                 </div>
             </div>
             <div class="social-links">
-                <a href="https://github.com/chaitanyakumar-d" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com/in/chaitanyakumard" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/chaitanyakumar-d" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/chaitanyakumard" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
                 <a href="mailto:chaitanyadasari09@outlook.com"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
@@ -238,11 +261,11 @@
 </section>
     <footer>
         <div class="container">
-            <p>&copy; 2024 Chaitanya Dasari. All rights reserved.</p>
+            <p>&copy; <span id="year">2024</span> Chaitanya Dasari. All rights reserved.</p>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js" defer></script>
 </body>
 </html>
