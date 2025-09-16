@@ -122,6 +122,24 @@ document.addEventListener("DOMContentLoaded", function() {
             localStorage.setItem('style', next);
         });
     }
+
+    // Collapsible Skills Toggle
+    const skillsToggle = document.getElementById('skillsToggle');
+    const extendedSkills = document.getElementById('extendedSkills');
+    if (skillsToggle && extendedSkills) {
+        skillsToggle.addEventListener('click', () => {
+            const expanded = skillsToggle.getAttribute('aria-expanded') === 'true';
+            const nextState = !expanded;
+            skillsToggle.setAttribute('aria-expanded', String(nextState));
+            if (nextState) {
+                extendedSkills.hidden = false;
+                skillsToggle.textContent = 'Hide Additional Skills';
+            } else {
+                extendedSkills.hidden = true;
+                skillsToggle.textContent = 'Show More Skills';
+            }
+        });
+    }
 });
 
 // Smooth Scrolling

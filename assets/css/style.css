@@ -85,6 +85,19 @@ section { padding: 84px 0; }
 .skill-category h3 { margin: 4px 0 10px; }
 .skill-category ul { padding-left: 18px; color: var(--text-muted); }
 
+/* Collapsible Skills */
+.skills-collapsible { max-width: 880px; margin: 0 auto; }
+.core-stack { background: var(--elev-1); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px 26px 20px; box-shadow: var(--shadow); }
+.core-stack h3 { margin: 0 0 10px; font-size: 1.15rem; letter-spacing: .01em; }
+.core-line { margin: 0; font-weight: 500; line-height: 1.55; }
+.toggle-skills { margin: 20px auto 0; display: inline-flex; align-items: center; gap: 8px; background: var(--brand); color: #fff; border: none; padding: 12px 20px; font-weight: 600; border-radius: 999px; cursor: pointer; box-shadow: var(--shadow); transition: var(--transition); }
+.toggle-skills:hover { transform: translateY(-2px); }
+.extended-skills { margin-top: 24px; background: var(--elev-1); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px 24px 18px; box-shadow: var(--shadow); }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+.skill-tags span { background: color-mix(in oklab, var(--brand) 12%, transparent); color: var(--brand); padding: 6px 12px; border-radius: 999px; font-size: .8rem; font-weight: 600; letter-spacing: .02em; border: 1px solid color-mix(in oklab, var(--brand) 25%, var(--border)); }
+body.theme-dark .skill-tags span { background: color-mix(in oklab, var(--brand) 20%, transparent); }
+.extended-skills[hidden] { display: none; }
+
 /* Experience */
 .experience-timeline { position: relative; }
 .exp-item { padding: 22px; margin-bottom: 18px; }
