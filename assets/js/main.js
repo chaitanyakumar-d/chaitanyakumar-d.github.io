@@ -208,6 +208,23 @@ document.addEventListener("DOMContentLoaded", function() {
         const baseText = item.tags.join(' ') + ' ' + item.answer;
         const toks = tokenize(baseText);
         item.vector = vectorize(toks, vocab);
+        // term frequency map for lexical scoring
+        const tf = new Map();
+        toks.forEach(t => tf.set(t, (tf.get(t)||0)+1));
+        item._tf = tf;
+    });
+
+    // Build document frequency & idf
+    const df = new Map();
+    kb.forEach(item => {
+        const seen = new Set(item._tf.keys());
+        seen.forEach(term => df.set(term, (df.get(term)||0)+1));
+    });
+    const N_DOCS = kb.length;
+    const idf = new Map();
+    df.forEach((count, term) => {
+        // add 0.5 smoothing
+        idf.set(term, Math.log((N_DOCS - count + 0.5)/(count + 0.5) + 1));
     });
 
     function addMessage(text, sender='bot') {
@@ -289,6 +306,20 @@ document.addEventListener("DOMContentLoaded", function() {
         const qVector = vectorize(qTokens, vocab);
         const scored = [];
 
+        // BM25 parameters
+        const k1 = 1.2, b = 0.75;
+        const avgdl = kb.reduce((s,it)=> s + it._tf.size, 0)/kb.length;
+        function bm25(item){
+            let score = 0; const dl = item._tf.size;
+            qTokens.forEach(t => {
+                if (!item._tf.has(t)) return;
+                const freq = item._tf.get(t);
+                const termIdf = idf.get(t) || 0;
+                score += termIdf * (freq * (k1 + 1)) / (freq + k1 * (1 - b + b * (dl/avgdl)));
+            });
+            return score;
+        }
+
         function heuristicScore(item){
             let score = 0;
             item.tags.forEach(t => { if (nq.includes(t)) score += 3; });
@@ -307,10 +338,14 @@ document.addEventListener("DOMContentLoaded", function() {
         kb.forEach(item => {
             const h = heuristicScore(item) / maxHeuristic;
             const c = cosine(item.vector, qVector);
-            const combined = 0.55 * h + 0.45 * c;
-            scored.push({ item, h, c, combined });
+            const bscore = bm25(item);
+            scored.push({ item, h, c, b: bscore });
         });
-        scored.sort((a,b)=>b.combined - a.combined);
+        const maxB = scored.reduce((m,s)=> s.b>m?s.b:m, 0) || 1;
+        scored.forEach(s => { s.bn = s.b / maxB; });
+        const weights = window.ChatAssistant.weights || { heuristic: 0.4, cosine: 0.35, bm25: 0.25 };
+        scored.forEach(s => { s.combined = weights.heuristic * s.h + weights.cosine * s.c + weights.bm25 * s.bn; });
+        scored.sort((a,b)=> b.combined - a.combined);
 
         const best = scored[0];
         let answerText = '';
@@ -375,6 +410,48 @@ document.addEventListener("DOMContentLoaded", function() {
         kb.forEach(item => { if (map[item.id]) item.vector = map[item.id]; });
     };
     window.ChatAssistant.export = exportTranscript;
+    window.ChatAssistant.weights = { heuristic: 0.4, cosine: 0.35, bm25: 0.25 };
+    window.ChatAssistant.setConfig = function(cfg){
+        if (cfg && cfg.weights){
+            const w = cfg.weights;
+            ['heuristic','cosine','bm25'].forEach(k => { if (typeof w[k] === 'number') window.ChatAssistant.weights[k] = w[k]; });
+            const sum = Object.values(window.ChatAssistant.weights).reduce((a,b)=>a+b,0) || 1;
+            // normalize to sum ~1
+            Object.keys(window.ChatAssistant.weights).forEach(k => window.ChatAssistant.weights[k] = +(window.ChatAssistant.weights[k]/sum).toFixed(3));
+        }
+    };
+
+    // External embeddings loader (optional)
+    async function loadExternalEmbeddings(){
+        try {
+            const res = await fetch('assets/data/embeddings.json', { cache: 'no-store' });
+            if (!res.ok) return; // silent fallback
+            const data = await res.json(); // expected: { dimension: N, vectors: { "1": [...], ... } }
+            if (!data || !data.vectors) return;
+            const sample = Object.values(data.vectors)[0];
+            if (!Array.isArray(sample)) return;
+            const dim = data.dimension || sample.length;
+            // Ensure dimension matches existing vector length; if mismatch skip
+            if (kb[0] && Array.isArray(kb[0].vector) && kb[0].vector.length !== dim) {
+                console.warn('[ChatAssistant] Embedding dimension mismatch; skipping external embeddings');
+                return;
+            }
+            const injected = {};
+            Object.keys(data.vectors).forEach(id => {
+                const vec = data.vectors[id];
+                if (Array.isArray(vec) && vec.length === dim) {
+                    injected[Number(id)] = vec;
+                }
+            });
+            if (Object.keys(injected).length) {
+                window.ChatAssistant.injectEmbeddings(injected);
+                console.log('[ChatAssistant] External embeddings loaded for', Object.keys(injected).length, 'items.');
+            }
+        } catch(e) {
+            // silent fail
+        }
+    }
+    loadExternalEmbeddings();
 
     if (form) {
         form.addEventListener('submit', (e) => {
@@ -386,8 +463,9 @@ document.addEventListener("DOMContentLoaded", function() {
             if (q === '/export') { exportTranscript(); input.value=''; return; }
             if (q === '/why') {
                 if (!chatState.lastDebugScores){ addMessage('No prior answer context available.', 'bot'); input.value=''; return; }
-                const explain = chatState.lastDebugScores.map(s=>`#${s.item.id} h=${s.h.toFixed(2)} c=${s.c.toFixed(2)} total=${s.combined.toFixed(2)}`).join(' | ');
+                const explain = chatState.lastDebugScores.map(s=>`#${s.item.id} h=${s.h.toFixed(2)} c=${s.c.toFixed(2)} b=${(s.bn||0).toFixed(2)} total=${s.combined.toFixed(2)}`).join(' | ');
                 addMessage('Scoring: ' + explain, 'bot'); input.value=''; return; }
+            if (q === '/stats') { const w = window.ChatAssistant.weights || {heuristic:0.4,cosine:0.35,bm25:0.25}; addMessage(`Weights h:${w.heuristic} c:${w.cosine} b:${w.bm25} vocab:${vocab.length} docs:${kb.length}`, 'bot'); input.value=''; return; }
             addMessage(q, 'user');
             chatState.history.push(q); if (chatState.history.length > chatState.maxHistory) chatState.history.shift(); saveState(); input.value='';
             const typing = document.createElement('div'); typing.className='chat-typing'; typing.textContent='Thinking...'; messagesEl.appendChild(typing); messagesEl.scrollTop = messagesEl.scrollHeight;
@@ -399,7 +477,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const estTime = Math.min(2000, ans.text.length * 6);
                 setTimeout(()=>{ const newMsg = messagesEl.children[preMsgCount]; if (newMsg) highlightTerms(newMsg, (ans.debugScores||[]).flatMap(s=>s.item.tags)); }, estTime);
                 if (chatState.debug && ans.debugScores){
-                    const dbg = ans.debugScores.map(s=>`#${s.item.id} h:${s.h.toFixed(2)} c:${s.c.toFixed(2)} total:${s.combined.toFixed(2)}`).join(' | ');
+                    const dbg = ans.debugScores.map(s=>`#${s.item.id} h:${s.h.toFixed(2)} c:${s.c.toFixed(2)} b:${(s.bn||0).toFixed(2)} total:${s.combined.toFixed(2)}`).join(' | ');
                     addMessage('[debug] ' + dbg, 'bot');
                 }
                 if (ans.debugScores){ chatState.lastDebugScores = ans.debugScores; renderSuggestions(ans.debugScores); }
