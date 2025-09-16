@@ -125,6 +125,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const input = document.getElementById('chatInput');
     const messagesEl = document.getElementById('chatMessages');
 
+    // Step 3 state: conversation history + debug
+    const chatState = {
+        history: [],
+        maxHistory: 8,
+        lastBestId: null,
+        debug: false
+    };
+
     // Knowledge base derived from resume/portfolio
     // Step 2: Embedding-ready KB structure (adds id + vector placeholder)
     const kb = [
@@ -185,12 +193,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function normalize(str){ return str.toLowerCase(); }
 
-    function answerQuery(q) {
-        const nq = normalize(q);
+    function answerQuery(rawQ) {
+        // Pronoun resolution using last best hit
+        function augment(q){
+            if (/^(it|that|this|they|those|he|she|these)\b/i.test(q) && chatState.lastBestId){
+                const ref = kb.find(k=>k.id===chatState.lastBestId);
+                if (ref){
+                    return ref.tags.slice(0,3).join(' ') + ' ' + q;
+                }
+            }
+            return q;
+        }
+        const q = rawQ.trim();
+        const augmented = augment(q);
+        const nq = normalize(augmented);
         const words = nq.split(/[^a-z0-9%]+/).filter(Boolean);
         const qTokens = tokenize(nq);
         const qVector = vectorize(qTokens, vocab);
-        let best = null; let bestCombined = 0; let debug = null;
+        const scored = [];
 
         function heuristicScore(item){
             let score = 0;
@@ -208,23 +228,42 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const maxHeuristic = Math.max(10, words.length * 6 + 15);
         kb.forEach(item => {
-            const h = heuristicScore(item) / maxHeuristic; // normalize 0..~1
-            const c = cosine(item.vector, qVector); // 0..1
-            // blend weights (heuristic slightly stronger for small vocab scenario)
+            const h = heuristicScore(item) / maxHeuristic;
+            const c = cosine(item.vector, qVector);
             const combined = 0.55 * h + 0.45 * c;
-            if (combined > bestCombined) { bestCombined = combined; best = item; debug = {h,c,combined}; }
+            scored.push({ item, h, c, combined });
         });
+        scored.sort((a,b)=>b.combined - a.combined);
 
-        const confidence = bestCombined; // already 0..1 style
-        if (best && confidence >= 0.22) return best.answer;
+        const best = scored[0];
+        let answerText = '';
+        let confidence = best ? best.combined : 0;
+        let usedMulti = false;
 
-        // targeted heuristic fallbacks remain
-        if (/experience|work|role/.test(nq)) return 'Ask about specific roles: Piper Sandler, CVS Aetna, Charles Schwab, Twilight.';
-        if (/project|portfolio/.test(nq)) return 'Project: ChatGPT NLP Analyzer (OpenAI API, Streamlit, NLP).';
-        if (/skill|tech|stack|tool/.test(nq)) return kb.find(k=>k.tags.includes('skills')).answer;
-        if (/education|degree/.test(nq)) return kb.find(k=>k.tags.includes('education')).answer;
+        if (best && confidence >= 0.22){
+            // consider 2nd result if reasonably close and above softer floor
+            const second = scored[1];
+            if (second && second.combined >= 0.18 && second.combined >= best.combined * 0.78){
+                if (second.item.id !== best.item.id){
+                    usedMulti = true;
+                    answerText = best.item.answer + ' \n\nAlso: ' + second.item.answer;
+                }
+            }
+            if (!answerText) answerText = best.item.answer;
+            chatState.lastBestId = best.item.id;
+            return { text: answerText, confidence, usedMulti, debugScores: scored.slice(0,3) };
+        }
 
-        return 'Not sure yet. Try: "Piper Sandler", "CVS Aetna", "LLM work", "skills", or "education".';
+        // targeted heuristic fallbacks
+        if (/experience|work|role/.test(nq)) return { text: 'Ask about specific roles: Piper Sandler, CVS Aetna, Charles Schwab, Twilight.', confidence, usedMulti, debugScores: scored.slice(0,3) };
+        if (/project|portfolio/.test(nq)) return { text: 'Project: ChatGPT NLP Analyzer (OpenAI API, Streamlit, NLP).', confidence, usedMulti, debugScores: scored.slice(0,3) };
+        if (/skill|tech|stack|tool/.test(nq)) return { text: kb.find(k=>k.tags.includes('skills')).answer, confidence, usedMulti, debugScores: scored.slice(0,3) };
+        if (/education|degree/.test(nq)) return { text: kb.find(k=>k.tags.includes('education')).answer, confidence, usedMulti, debugScores: scored.slice(0,3) };
+
+        // dynamic fallback suggestions based on top tags
+        const suggest = scored.slice(0,3).map(s=>s.item.tags[0]).filter(Boolean);
+        const suggestionLine = suggest.length ? ' Try asking about: ' + suggest.join(', ') + '.' : '';
+        return { text: 'Not sure yet.' + suggestionLine, confidence, usedMulti, debugScores: scored.slice(0,3) };
     }
 
     function openChat(){ if (!panel) return; panel.classList.add('active'); panel.setAttribute('aria-hidden','false'); if (input) input.focus(); }
@@ -237,9 +276,17 @@ document.addEventListener("DOMContentLoaded", function() {
             e.preventDefault();
             const q = input.value.trim();
             if (!q) return;
+            if (q === '/debug') {
+                chatState.debug = !chatState.debug;
+                addMessage('Debug mode ' + (chatState.debug ? 'enabled' : 'disabled') + '.', 'bot');
+                input.value='';
+                return;
+            }
             addMessage(q, 'user');
+            // add to history
+            chatState.history.push(q);
+            if (chatState.history.length > chatState.maxHistory) chatState.history.shift();
             input.value='';
-            // typing indicator
             const typing = document.createElement('div');
             typing.className='chat-typing';
             typing.textContent='Thinking...';
@@ -247,7 +294,11 @@ document.addEventListener("DOMContentLoaded", function() {
             setTimeout(()=>{
                 typing.remove();
                 const ans = answerQuery(q);
-                addMessage(ans, 'bot');
+                addMessage(ans.text, 'bot');
+                if (chatState.debug && ans.debugScores){
+                    const dbg = ans.debugScores.map(s=>`#${s.item.id} h:${s.h.toFixed(2)} c:${s.c.toFixed(2)} total:${s.combined.toFixed(2)}`).join(' | ');
+                    addMessage('[debug] ' + dbg, 'bot');
+                }
             }, 450);
         });
     }
