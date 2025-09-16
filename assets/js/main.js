@@ -116,6 +116,84 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+
+    // AI Chat Assistant (Rule-based resume Q&A)
+    const launcher = document.getElementById('chatLauncher');
+    const panel = document.getElementById('chatPanel');
+    const closeBtn = document.getElementById('chatClose');
+    const form = document.getElementById('chatForm');
+    const input = document.getElementById('chatInput');
+    const messagesEl = document.getElementById('chatMessages');
+
+    // Knowledge base derived from resume/portfolio
+    const kb = [
+        { tags: ['piper','current','role','gpt','rag','neo4j','fraud','trading','agent'], answer: 'At Piper Sandler I deployed a GPT-4 + RAG research assistant (50% faster analyst turnaround), built a Neo4j + LLM retrieval layer, prototyped autonomous trading/risk agents (15% better backtested risk-adjusted returns), and implemented a graph+NLP fraud pipeline that improved precision by 20%.' },
+        { tags: ['graduate','research','assistant','retention','university','concordia','88%','grant'], answer: 'As a Graduate Research Assistant I engineered an 88% accuracy student retention model, co-authored a successful $50K AI ethics grant, and ran large-scale NLP sentiment analysis for strategic dashboards.' },
+        { tags: ['cvs','aetna','healthcare','infosys','segmentation','vertex','bert','gan','risk','readmission','12%'], answer: 'For CVS Aetna I built patient segmentation (12% reduction in readmissions), cost & risk models on Vertex AI (85% accuracy), applied BERT for clinical entity extraction, and generated HIPAA-compliant synthetic data with GANs.' },
+        { tags: ['schwab','charles','finance','databricks','agentic','automation','llm','fraud','pipeline','30%'], answer: 'At Charles Schwab I implemented agentic automation (ETL + anomaly detection), prototyped LLM chatbot workflows, optimized Databricks pipelines (30% faster), and applied ML for fraud & segmentation to improve client risk stratification.' },
+        { tags: ['twilight','analyst','churn','forecast','pca','etl','tableau'], answer: 'At Twilight Software I delivered churn & demand forecasts, applied statistical methods + PCA, engineered ETL/warehousing for BI, and built Tableau dashboards for leadership KPIs.' },
+        { tags: ['skills','stack','core','tech','technology'], answer: 'Core stack: Python, SQL, Machine Learning, LLMs (RAG), Spark, Cloud (GCP/Azure/AWS), Databricks, Neo4j. Extended: PyTorch, Scikit-learn, XGBoost, TensorFlow, LangChain, Vertex AI, SageMaker, ETL, Graph Analytics, NLP, Time Series, GANs, MLOps, Tableau, Power BI.' },
+        { tags: ['education','degree','ms','master','bsc','college','university'], answer: 'Education: M.S. Data Analytics (Concordia University St. Paul, GPA 3.91) and B.Sc. (Nizam College, GPA 8.22).' },
+        { tags: ['contact','email','location','visa','work','status','opt','h1b'], answer: 'Contact: Email chaitanyadasari09@outlook.com · Location Eden Prairie, MN · Work Status: F-1 STEM OPT (through Feb 2028), H-1B Cap Approved.' },
+        { tags: ['llm','rag','gpt','language','model','openai'], answer: 'LLM experience: Built GPT-4 + RAG assistant (50% faster research), experimented with fine-tuning/chatbot workflows, integrated Neo4j knowledge graph for contextual retrieval.' },
+        { tags: ['fraud','risk','detection','anomaly'], answer: 'Fraud/Risk: Graph community + NLP sentiment pipeline (20% precision lift), anomaly detection automation at Charles Schwab, risk modeling for trading & healthcare cost prediction.' },
+        { tags: ['tools','mlops','deployment','monitoring','ci','cd'], answer: 'MLOps/Tools: CI/CD, model deployment & monitoring, ETL pipelines, Databricks optimization, Vertex AI orchestration, model performance tracking.' }
+    ];
+
+    function addMessage(text, sender='bot') {
+        if (!messagesEl) return;
+        const div = document.createElement('div');
+        div.className = `chat-msg ${sender}`;
+        div.textContent = text;
+        messagesEl.appendChild(div);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    function normalize(str){ return str.toLowerCase(); }
+
+    function answerQuery(q) {
+        const nq = normalize(q);
+        let best = null; let score = 0;
+        kb.forEach(item => {
+            let s = 0;
+            item.tags.forEach(t => { if (nq.includes(t)) s++; });
+            if (s > score) { score = s; best = item; }
+        });
+        if (best && score > 0) return best.answer;
+        // fallback heuristic
+        if (/experience|work|role/.test(nq)) return 'I can summarize roles: ask about Piper Sandler, CVS Aetna, Charles Schwab, or Twilight for specifics.';
+        if (/project|portfolio/.test(nq)) return 'Featured project: ChatGPT NLP Analyzer leveraging OpenAI API, Streamlit, and NLP techniques.';
+        if (/skill|tech|stack|tool/.test(nq)) return kb.find(k=>k.tags.includes('skills')).answer;
+        return 'Could you rephrase? You can ask about: Piper Sandler, CVS Aetna, Charles Schwab, skills, education, LLM work, or contact.';
+    }
+
+    function openChat(){ if (!panel) return; panel.classList.add('active'); panel.setAttribute('aria-hidden','false'); if (input) input.focus(); }
+    function closeChat(){ if (!panel) return; panel.classList.remove('active'); panel.setAttribute('aria-hidden','true'); }
+
+    if (launcher) launcher.addEventListener('click', () => { const isOpen = panel.classList.contains('active'); if (isOpen) closeChat(); else { openChat(); if (!messagesEl.dataset.boot){ addMessage('Hi! Ask me about Chaitanya\'s experience, skills, LLM work, or education.'); messagesEl.dataset.boot='1'; } } });
+    if (closeBtn) closeBtn.addEventListener('click', closeChat);
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const q = input.value.trim();
+            if (!q) return;
+            addMessage(q, 'user');
+            input.value='';
+            // typing indicator
+            const typing = document.createElement('div');
+            typing.className='chat-typing';
+            typing.textContent='Thinking...';
+            messagesEl.appendChild(typing); messagesEl.scrollTop = messagesEl.scrollHeight;
+            setTimeout(()=>{
+                typing.remove();
+                const ans = answerQuery(q);
+                addMessage(ans, 'bot');
+            }, 450);
+        });
+    }
+
+    // Close on ESC
+    document.addEventListener('keydown', (e)=>{ if (e.key==='Escape' && panel.classList.contains('active')) closeChat(); });
 });
 
 // Smooth Scrolling

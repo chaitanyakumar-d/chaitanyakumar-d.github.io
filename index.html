@@ -280,6 +280,21 @@
         </div>
     </footer>
 
+    <!-- AI Chat Assistant -->
+    <button class="chat-launcher" aria-label="Open chat assistant" id="chatLauncher">💬</button>
+    <div class="chat-panel" id="chatPanel" aria-hidden="true" role="dialog" aria-labelledby="chatTitle">
+        <div class="chat-header">
+            <h3 id="chatTitle">AI Assistant</h3>
+            <button class="chat-close" id="chatClose" aria-label="Close chat">✕</button>
+        </div>
+        <div class="chat-body" id="chatMessages" aria-live="polite"></div>
+        <form class="chat-input-row" id="chatForm" autocomplete="off">
+            <input type="text" id="chatInput" placeholder="Ask about my experience, skills..." aria-label="Your question" required />
+            <button type="submit" class="chat-send" aria-label="Send message">Send</button>
+        </form>
+        <div class="chat-hint">Examples: "What LLM work have you done?" • "Experience at Piper Sandler" • "Skills"</div>
+    </div>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js" defer></script>
 </body>
