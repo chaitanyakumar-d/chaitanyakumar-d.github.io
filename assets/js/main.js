@@ -126,19 +126,53 @@ document.addEventListener("DOMContentLoaded", function() {
     const messagesEl = document.getElementById('chatMessages');
 
     // Knowledge base derived from resume/portfolio
+    // Step 2: Embedding-ready KB structure (adds id + vector placeholder)
     const kb = [
-        { tags: ['piper','current','role','gpt','rag','neo4j','fraud','trading','agent'], answer: 'At Piper Sandler I deployed a GPT-4 + RAG research assistant (50% faster analyst turnaround), built a Neo4j + LLM retrieval layer, prototyped autonomous trading/risk agents (15% better backtested risk-adjusted returns), and implemented a graph+NLP fraud pipeline that improved precision by 20%.' },
-        { tags: ['graduate','research','assistant','retention','university','concordia','88%','grant'], answer: 'As a Graduate Research Assistant I engineered an 88% accuracy student retention model, co-authored a successful $50K AI ethics grant, and ran large-scale NLP sentiment analysis for strategic dashboards.' },
-        { tags: ['cvs','aetna','healthcare','infosys','segmentation','vertex','bert','gan','risk','readmission','12%'], answer: 'For CVS Aetna I built patient segmentation (12% reduction in readmissions), cost & risk models on Vertex AI (85% accuracy), applied BERT for clinical entity extraction, and generated HIPAA-compliant synthetic data with GANs.' },
-        { tags: ['schwab','charles','finance','databricks','agentic','automation','llm','fraud','pipeline','30%'], answer: 'At Charles Schwab I implemented agentic automation (ETL + anomaly detection), prototyped LLM chatbot workflows, optimized Databricks pipelines (30% faster), and applied ML for fraud & segmentation to improve client risk stratification.' },
-        { tags: ['twilight','analyst','churn','forecast','pca','etl','tableau'], answer: 'At Twilight Software I delivered churn & demand forecasts, applied statistical methods + PCA, engineered ETL/warehousing for BI, and built Tableau dashboards for leadership KPIs.' },
-        { tags: ['skills','stack','core','tech','technology'], answer: 'Core stack: Python, SQL, Machine Learning, LLMs (RAG), Spark, Cloud (GCP/Azure/AWS), Databricks, Neo4j. Extended: PyTorch, Scikit-learn, XGBoost, TensorFlow, LangChain, Vertex AI, SageMaker, ETL, Graph Analytics, NLP, Time Series, GANs, MLOps, Tableau, Power BI.' },
-        { tags: ['education','degree','ms','master','bsc','college','university'], answer: 'Education: M.S. Data Analytics (Concordia University St. Paul, GPA 3.91) and B.Sc. (Nizam College, GPA 8.22).' },
-        { tags: ['contact','email','location','visa','work','status','opt','h1b'], answer: 'Contact: Email chaitanyadasari09@outlook.com · Location Eden Prairie, MN · Work Status: F-1 STEM OPT (through Feb 2028), H-1B Cap Approved.' },
-        { tags: ['llm','rag','gpt','language','model','openai'], answer: 'LLM experience: Built GPT-4 + RAG assistant (50% faster research), experimented with fine-tuning/chatbot workflows, integrated Neo4j knowledge graph for contextual retrieval.' },
-        { tags: ['fraud','risk','detection','anomaly'], answer: 'Fraud/Risk: Graph community + NLP sentiment pipeline (20% precision lift), anomaly detection automation at Charles Schwab, risk modeling for trading & healthcare cost prediction.' },
-        { tags: ['tools','mlops','deployment','monitoring','ci','cd'], answer: 'MLOps/Tools: CI/CD, model deployment & monitoring, ETL pipelines, Databricks optimization, Vertex AI orchestration, model performance tracking.' }
+        { id: 1, tags: ['piper','current','role','gpt','rag','neo4j','fraud','trading','agent'], answer: 'At Piper Sandler I deployed a GPT-4 + RAG research assistant (50% faster analyst turnaround), built a Neo4j + LLM retrieval layer, prototyped autonomous trading/risk agents (15% better backtested risk-adjusted returns), and implemented a graph+NLP fraud pipeline that improved precision by 20%.', vector: null },
+        { id: 2, tags: ['graduate','research','assistant','retention','university','concordia','88%','grant'], answer: 'As a Graduate Research Assistant I engineered an 88% accuracy student retention model, co-authored a successful $50K AI ethics grant, and ran large-scale NLP sentiment analysis for strategic dashboards.', vector: null },
+        { id: 3, tags: ['cvs','aetna','healthcare','infosys','segmentation','vertex','bert','gan','risk','readmission','12%'], answer: 'For CVS Aetna I built patient segmentation (12% reduction in readmissions), cost & risk models on Vertex AI (85% accuracy), applied BERT for clinical entity extraction, and generated HIPAA-compliant synthetic data with GANs.', vector: null },
+        { id: 4, tags: ['schwab','charles','finance','databricks','agentic','automation','llm','fraud','pipeline','30%'], answer: 'At Charles Schwab I implemented agentic automation (ETL + anomaly detection), prototyped LLM chatbot workflows, optimized Databricks pipelines (30% faster), and applied ML for fraud & segmentation to improve client risk stratification.', vector: null },
+        { id: 5, tags: ['twilight','analyst','churn','forecast','pca','etl','tableau'], answer: 'At Twilight Software I delivered churn & demand forecasts, applied statistical methods + PCA, engineered ETL/warehousing for BI, and built Tableau dashboards for leadership KPIs.', vector: null },
+        { id: 6, tags: ['skills','stack','core','tech','technology'], answer: 'Core stack: Python, SQL, Machine Learning, LLMs (RAG), Spark, Cloud (GCP/Azure/AWS), Databricks, Neo4j. Extended: PyTorch, Scikit-learn, XGBoost, TensorFlow, LangChain, Vertex AI, SageMaker, ETL, Graph Analytics, NLP, Time Series, GANs, MLOps, Tableau, Power BI.', vector: null },
+        { id: 7, tags: ['education','degree','ms','master','bsc','college','university'], answer: 'Education: M.S. Data Analytics (Concordia University St. Paul, GPA 3.91) and B.Sc. (Nizam College, GPA 8.22).', vector: null },
+        { id: 8, tags: ['contact','email','location','visa','work','status','opt','h1b'], answer: 'Contact: Email chaitanyadasari09@outlook.com · Location Eden Prairie, MN · Work Status: F-1 STEM OPT (through Feb 2028), H-1B Cap Approved.', vector: null },
+        { id: 9, tags: ['llm','rag','gpt','language','model','openai'], answer: 'LLM experience: Built GPT-4 + RAG assistant (50% faster research), experimented with fine-tuning/chatbot workflows, integrated Neo4j knowledge graph for contextual retrieval.', vector: null },
+        { id: 10, tags: ['fraud','risk','detection','anomaly'], answer: 'Fraud/Risk: Graph community + NLP sentiment pipeline (20% precision lift), anomaly detection automation at Charles Schwab, risk modeling for trading & healthcare cost prediction.', vector: null },
+        { id: 11, tags: ['tools','mlops','deployment','monitoring','ci','cd'], answer: 'MLOps/Tools: CI/CD, model deployment & monitoring, ETL pipelines, Databricks optimization, Vertex AI orchestration, model performance tracking.', vector: null }
     ];
+
+    // --- Vector / Embedding Scaffolding (client-only, placeholder for real embeddings later) ---
+    function tokenize(text){
+        return text.toLowerCase().split(/[^a-z0-9%]+/).filter(w => w && w.length > 2 && !stopWords.has(w));
+    }
+    const stopWords = new Set(['the','and','for','with','that','this','was','are','one','two','from','into','plus','about','into','your','you','yet','not','sure','ask','built','model','data']);
+    function buildVocabulary(items){
+        const freq = new Map();
+        items.forEach(it => {
+            const all = it.tags.join(' ') + ' ' + it.answer;
+            tokenize(all).forEach(t => freq.set(t, (freq.get(t)||0)+1));
+        });
+        // keep words that appear at least once (could raise threshold later)
+        return Array.from(freq.keys()).sort();
+    }
+    function vectorize(tokens, vocab){
+        const vec = new Array(vocab.length).fill(0);
+        tokens.forEach(t => { const idx = vocab.indexOf(t); if (idx !== -1) vec[idx] += 1; });
+        // l2 normalize
+        let norm = Math.sqrt(vec.reduce((s,v)=>s+v*v,0)) || 1;
+        for (let i=0;i<vec.length;i++) vec[i] = vec[i]/norm;
+        return vec;
+    }
+    function cosine(a,b){
+        let s=0; for (let i=0;i<a.length;i++) s += a[i]*b[i];
+        return s; // already normalized
+    }
+    const vocab = buildVocabulary(kb);
+    kb.forEach(item => {
+        const baseText = item.tags.join(' ') + ' ' + item.answer;
+        const toks = tokenize(baseText);
+        item.vector = vectorize(toks, vocab);
+    });
 
     function addMessage(text, sender='bot') {
         if (!messagesEl) return;
@@ -154,19 +188,17 @@ document.addEventListener("DOMContentLoaded", function() {
     function answerQuery(q) {
         const nq = normalize(q);
         const words = nq.split(/[^a-z0-9%]+/).filter(Boolean);
-        let best = null; let bestScore = 0;
+        const qTokens = tokenize(nq);
+        const qVector = vectorize(qTokens, vocab);
+        let best = null; let bestCombined = 0; let debug = null;
 
-        function scoreItem(item){
+        function heuristicScore(item){
             let score = 0;
-            // tag matches (weighted)
             item.tags.forEach(t => { if (nq.includes(t)) score += 3; });
-            // word overlap
             words.forEach(w => {
-                // exact tag / substring overlap
                 if (item.tags.includes(w)) score += 2;
                 else if (item.answer.toLowerCase().includes(w)) score += 1;
                 else if (w.length > 4) {
-                    // partial (prefix) match
                     const partial = item.tags.find(t => t.startsWith(w.slice(0,4)));
                     if (partial) score += 1;
                 }
@@ -174,17 +206,19 @@ document.addEventListener("DOMContentLoaded", function() {
             return score;
         }
 
+        const maxHeuristic = Math.max(10, words.length * 6 + 15);
         kb.forEach(item => {
-            const s = scoreItem(item);
-            if (s > bestScore) { bestScore = s; best = item; }
+            const h = heuristicScore(item) / maxHeuristic; // normalize 0..~1
+            const c = cosine(item.vector, qVector); // 0..1
+            // blend weights (heuristic slightly stronger for small vocab scenario)
+            const combined = 0.55 * h + 0.45 * c;
+            if (combined > bestCombined) { bestCombined = combined; best = item; debug = {h,c,combined}; }
         });
 
-        const maxPossible = words.length * 6 + 15; // loose upper bound for normalization
-        const confidence = bestScore / Math.max(10, maxPossible);
+        const confidence = bestCombined; // already 0..1 style
+        if (best && confidence >= 0.22) return best.answer;
 
-        if (best && confidence >= 0.18) return best.answer;
-
-        // targeted heuristic fallbacks
+        // targeted heuristic fallbacks remain
         if (/experience|work|role/.test(nq)) return 'Ask about specific roles: Piper Sandler, CVS Aetna, Charles Schwab, Twilight.';
         if (/project|portfolio/.test(nq)) return 'Project: ChatGPT NLP Analyzer (OpenAI API, Streamlit, NLP).';
         if (/skill|tech|stack|tool/.test(nq)) return kb.find(k=>k.tags.includes('skills')).answer;
