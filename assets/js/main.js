@@ -64,32 +64,8 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Theme toggle and persistence
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    const savedTheme = localStorage.getItem('theme');
+    // Removed dark mode toggle logic (simplified to single light theme)
     const body = document.body;
-
-    function applyTheme(theme) {
-        if (theme === 'dark') body.classList.add('theme-dark');
-        else body.classList.remove('theme-dark');
-    }
-
-    const initialTheme = savedTheme || (prefersDark.matches ? 'dark' : 'light');
-    applyTheme(initialTheme);
-
-    const themeBtn = document.querySelector('.theme-toggle');
-    if (themeBtn) {
-        themeBtn.addEventListener('click', () => {
-            const isDark = document.body.classList.toggle('theme-dark');
-            const theme = isDark ? 'dark' : 'light';
-            localStorage.setItem('theme', theme);
-            themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-            themeBtn.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-        });
-        const isDark = body.classList.contains('theme-dark');
-        themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-        themeBtn.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-    }
 
     // Style toggle (Glass vs Neumorphic vs Mixed)
     const styleBtn = document.querySelector('.style-toggle');

@@ -15,18 +15,6 @@
   --transition: all .25s ease;
 }
 
-/* Dark theme overrides */
-body.theme-dark {
-  --bg: #0b1220;
-  --surface: #0f172a;
-  --elev-1: #0b1220;
-  --text: #f8fafc;
-  --text-muted: #94a3b8;
-  --brand: #60a5fa;
-  --brand-2: #34d399;
-  --border: #1f2937;
-  --shadow: 0 8px 24px rgba(0,0,0,.35);
-}
 
 /* Reset */
 * { box-sizing: border-box; }
@@ -95,7 +83,6 @@ section { padding: 84px 0; }
 .extended-skills { margin-top: 24px; background: var(--elev-1); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px 24px 18px; box-shadow: var(--shadow); }
 .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
 .skill-tags span { background: color-mix(in oklab, var(--brand) 12%, transparent); color: var(--brand); padding: 6px 12px; border-radius: 999px; font-size: .8rem; font-weight: 600; letter-spacing: .02em; border: 1px solid color-mix(in oklab, var(--brand) 25%, var(--border)); }
-body.theme-dark .skill-tags span { background: color-mix(in oklab, var(--brand) 20%, transparent); }
 .extended-skills[hidden] { display: none; }
 
 /* Experience */
