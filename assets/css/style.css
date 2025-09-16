@@ -64,7 +64,7 @@ section { padding: 84px 0; }
 .btn:hover { transform: translateY(-2px); }
 
 /* Cards / sections */
-.skill-category, .exp-item, .project-card, .contact-item { background: var(--elev-1); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+.skill-category, .exp-item, .project-card { background: var(--elev-1); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
 
 /* Skills */
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
@@ -100,11 +100,17 @@ section { padding: 84px 0; }
 .tech-stack span { display: inline-block; padding: 6px 10px; background: color-mix(in oklab, var(--brand) 10%, transparent); border: 1px solid color-mix(in oklab, var(--brand) 20%, var(--border)); color: var(--brand); border-radius: 999px; margin: 2px; font-size: .9rem; }
 
 /* Contact */
-.contact-item { text-align: center; padding: 24px; display: flex; flex-direction: column; align-items: center; }
-.contact-item i { font-size: 1.4rem; color: var(--brand); margin-bottom: .6rem; }
-.contact-item h3 { margin: 0 0 .3rem; }
-.contact-item p, .contact-item a { color: var(--text-muted); }
-.contact-item a:hover { color: var(--brand); text-decoration: none; }
+/* (Removed legacy .contact-item styles in favor of compact layout) */
+
+/* Compact contact */
+.contact-compact { display: flex; flex-wrap: wrap; gap: 10px 18px; justify-content: center; background: var(--elev-1); border: 1px solid var(--border); padding: 22px 26px; border-radius: var(--radius); box-shadow: var(--shadow); font-size: .95rem; line-height: 1.4; }
+.contact-compact .contact-chip { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); font-weight: 500; }
+.contact-compact .contact-chip a { color: var(--brand); font-weight: 600; }
+.contact-compact .contact-chip a:hover { text-decoration: underline; }
+.contact-compact i { color: var(--brand); font-size: .95rem; }
+.contact-compact .contact-sep { opacity: .35; }
+.contact-compact .status-ok { color: var(--brand-2); font-weight: 600; }
+@media (max-width: 640px) { .contact-compact { font-size: .85rem; gap: 6px 12px; padding: 18px 18px; } }
 
 /* Footer */
 footer { background: var(--surface); border-top: 1px solid var(--border); padding: 22px 0; text-align: center; color: var(--text-muted); }
@@ -157,23 +163,19 @@ body.style-glass .navbar { background: rgba(255,255,255,0.55); border-bottom: 1p
 body.theme-dark.style-glass .navbar { background: rgba(15, 23, 42, 0.6); border-color: rgba(255,255,255,0.08); }
 body.style-glass .skill-category,
 body.style-glass .exp-item,
-body.style-glass .project-card,
-body.style-glass .contact-item { background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.35); backdrop-filter: blur(18px); }
+body.style-glass .project-card { background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.35); backdrop-filter: blur(18px); }
 body.theme-dark.style-glass .skill-category,
 body.theme-dark.style-glass .exp-item,
-body.theme-dark.style-glass .project-card,
-body.theme-dark.style-glass .contact-item { background: rgba(15, 23, 42, 0.5); border-color: rgba(255,255,255,0.08); }
+body.theme-dark.style-glass .project-card { background: rgba(15, 23, 42, 0.5); border-color: rgba(255,255,255,0.08); }
 
 /* Neumorphism variant */
 body.style-neo { --elev-1: var(--bg); }
 body.style-neo .skill-category,
 body.style-neo .exp-item,
-body.style-neo .project-card,
-body.style-neo .contact-item { border: none; box-shadow: 8px 8px 22px rgba(2,6,23,0.08), -8px -8px 22px rgba(255,255,255,0.8); }
+body.style-neo .project-card { border: none; box-shadow: 8px 8px 22px rgba(2,6,23,0.08), -8px -8px 22px rgba(255,255,255,0.8); }
 body.theme-dark.style-neo .skill-category,
 body.theme-dark.style-neo .exp-item,
-body.theme-dark.style-neo .project-card,
-body.theme-dark.style-neo .contact-item { box-shadow: 8px 8px 22px rgba(0,0,0,0.45), -8px -8px 22px rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.04); }
+body.theme-dark.style-neo .project-card { box-shadow: 8px 8px 22px rgba(0,0,0,0.45), -8px -8px 22px rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.04); }
 body.style-neo .btn { box-shadow: 6px 6px 12px rgba(2,6,23,0.06), -6px -6px 12px rgba(255,255,255,0.7); }
 
 /* Mixed style: Glass hero, Neumorphic cards */
@@ -193,15 +195,13 @@ body.theme-dark.style-mixed .hero-content {
 
 body.style-mixed .skill-category,
 body.style-mixed .exp-item,
-body.style-mixed .project-card,
-body.style-mixed .contact-item {
+body.style-mixed .project-card {
   border: none;
   box-shadow: 8px 8px 22px rgba(2,6,23,0.08), -8px -8px 22px rgba(255,255,255,0.8);
 }
 body.theme-dark.style-mixed .skill-category,
 body.theme-dark.style-mixed .exp-item,
-body.theme-dark.style-mixed .project-card,
-body.theme-dark.style-mixed .contact-item {
+body.theme-dark.style-mixed .project-card {
   box-shadow: 8px 8px 22px rgba(0,0,0,0.45), -8px -8px 22px rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.04);
 }
