@@ -148,6 +148,24 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Floating Back To Top button behavior
+    const backToTopBtn = document.getElementById('backToTop');
+    if (backToTopBtn) {
+        const revealOffset = 320; // px scroll threshold
+        const maybeToggleBackToTop = () => {
+            if (window.scrollY > revealOffset) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        };
+        window.addEventListener('scroll', maybeToggleBackToTop, { passive: true });
+        maybeToggleBackToTop();
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
     // Persistence helpers
     const STORAGE_KEY = 'chat_assistant_state_v1';
     function saveState(){
