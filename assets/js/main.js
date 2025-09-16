@@ -133,6 +133,32 @@ document.addEventListener("DOMContentLoaded", function() {
         debug: false
     };
 
+    // Persistence helpers
+    const STORAGE_KEY = 'chat_assistant_state_v1';
+    function saveState(){
+        try {
+            const payload = {
+                history: chatState.history.slice(-chatState.maxHistory),
+                lastBestId: chatState.lastBestId
+            };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+        } catch(e) {/* ignore */}
+    }
+    function loadState(){
+        try {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (!raw) return;
+            const data = JSON.parse(raw);
+            if (Array.isArray(data.history)) chatState.history = data.history.slice(-chatState.maxHistory);
+            if (data.lastBestId) chatState.lastBestId = data.lastBestId;
+            // Reconstruct visible messages from stored history (user only) as a light bootstrap
+            if (messagesEl && chatState.history.length){
+                chatState.history.slice(-4).forEach(q => addMessage(q, 'user'));
+            }
+        } catch(e) {/* ignore */}
+    }
+    loadState();
+
     // Knowledge base derived from resume/portfolio
     // Step 2: Embedding-ready KB structure (adds id + vector placeholder)
     const kb = [
@@ -188,6 +214,55 @@ document.addEventListener("DOMContentLoaded", function() {
         div.className = `chat-msg ${sender}`;
         div.textContent = text;
         messagesEl.appendChild(div);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+        return div;
+    }
+
+    // Streaming simulation: reveal answer text gradually
+    function streamAnswer(fullText){
+        const div = addMessage('', 'bot');
+        if (!div) return;
+        const tokens = fullText.split(/(\s+)/); // keep spacing tokens
+        let i = 0;
+        function step(){
+            if (i >= tokens.length) return;
+            div.textContent += tokens[i];
+            i++;
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+            const delay = 15 + Math.min(120, tokens[i-1].length * 2);
+            setTimeout(step, delay);
+        }
+        step();
+    }
+
+    // Highlight matched tags in a final message (after streaming)
+    function highlightTerms(container, tags){
+        if (!container) return;
+        const text = container.textContent;
+        const uniq = Array.from(new Set(tags.filter(t=>t.length>3))).slice(0,8);
+        const pattern = new RegExp('\\b(' + uniq.map(t=>t.replace(/[-/\\^$*+?.()|[\]{}]/g,'\\$&')).join('|') + ')\\b','gi');
+        const html = text.replace(pattern, m=>`<span class="chat-highlight">${m}</span>`);
+        container.innerHTML = html;
+    }
+
+    function renderSuggestions(topItems){
+        if (!messagesEl || !topItems.length) return;
+        const wrap = document.createElement('div');
+        wrap.className = 'chat-suggestions';
+        topItems.slice(0,3).forEach(obj => {
+            const tag = obj.item.tags[0];
+            if (!tag) return;
+            const btn = document.createElement('button');
+            btn.type='button';
+            btn.className='chat-suggestion';
+            btn.textContent = tag;
+            btn.addEventListener('click', () => {
+                input.value = tag;
+                form.dispatchEvent(new Event('submit'));
+            });
+            wrap.appendChild(btn);
+        });
+        messagesEl.appendChild(wrap);
         messagesEl.scrollTop = messagesEl.scrollHeight;
     }
 
@@ -282,10 +357,19 @@ document.addEventListener("DOMContentLoaded", function() {
                 input.value='';
                 return;
             }
+            if (q === '/reset') {
+                chatState.history = [];
+                chatState.lastBestId = null;
+                saveState();
+                addMessage('Chat context cleared.', 'bot');
+                input.value='';
+                return;
+            }
             addMessage(q, 'user');
             // add to history
             chatState.history.push(q);
             if (chatState.history.length > chatState.maxHistory) chatState.history.shift();
+            saveState();
             input.value='';
             const typing = document.createElement('div');
             typing.className='chat-typing';
@@ -294,11 +378,20 @@ document.addEventListener("DOMContentLoaded", function() {
             setTimeout(()=>{
                 typing.remove();
                 const ans = answerQuery(q);
-                addMessage(ans.text, 'bot');
+                const preMsgCount = messagesEl.children.length;
+                streamAnswer(ans.text);
+                // After streaming finishes, schedule highlight (approx by length)
+                const estTime = Math.min(2000, ans.text.length * 6);
+                setTimeout(()=>{
+                    const newMsg = messagesEl.children[preMsgCount];
+                    if (newMsg) highlightTerms(newMsg, (ans.debugScores||[]).flatMap(s=>s.item.tags));
+                }, estTime);
                 if (chatState.debug && ans.debugScores){
                     const dbg = ans.debugScores.map(s=>`#${s.item.id} h:${s.h.toFixed(2)} c:${s.c.toFixed(2)} total:${s.combined.toFixed(2)}`).join(' | ');
                     addMessage('[debug] ' + dbg, 'bot');
                 }
+                if (ans.debugScores) renderSuggestions(ans.debugScores);
+                chatState.lastBestId && saveState();
             }, 450);
         });
     }

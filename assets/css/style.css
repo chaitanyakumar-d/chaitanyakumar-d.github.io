@@ -128,6 +128,10 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 .chat-send:hover { opacity: .9; }
 .chat-hint { font-size: .65rem; padding: 4px 10px 10px; color: var(--text-muted); text-align: center; }
 .chat-typing { font-size: .7rem; color: var(--text-muted); padding: 0 12px 6px; }
+.chat-suggestions { display: flex; gap: 6px; flex-wrap: wrap; padding: 0 8px 8px; }
+.chat-suggestion { background: var(--elev-1); border: 1px solid var(--border); padding: 4px 10px; border-radius: 999px; font-size: .65rem; cursor: pointer; color: var(--text-muted); transition: var(--transition); }
+.chat-suggestion:hover { background: var(--brand); color: #fff; border-color: var(--brand); }
+.chat-highlight { background: color-mix(in oklab, var(--brand) 25%, transparent); padding: 0 2px; border-radius: 4px; }
 
 @media (max-width: 640px) {
   .chat-panel { right: 12px; left: 12px; width: auto; bottom: 84px; }
