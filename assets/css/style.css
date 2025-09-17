@@ -109,6 +109,29 @@ section { padding: 90px 0 84px; position: relative; }
   .profile-social { font-size: 1rem; gap: 12px; }
 }
 
+@media (max-height: 690px) and (min-width: 901px) {
+  .profile-pane { padding: 20px 22px 24px; gap: 14px; }
+  .profile-photo-wrapper { width: 150px; height: 150px; }
+  .profile-name { font-size: 1.45rem; }
+  .profile-nav a { padding: 7px 10px; font-size: .75rem; }
+  .profile-highlights div { padding: 6px 8px 5px; }
+  .resume-download .btn.small { padding: 9px 14px; font-size: .68rem; }
+}
+
+@media (max-height: 640px) and (min-width: 901px) {
+  .profile-pane { overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .profile-inner { gap: 14px; }
+  .profile-photo-wrapper { width: 140px; height: 140px; }
+  .profile-name { font-size: 1.35rem; }
+  .profile-nav a { padding: 6px 9px; }
+  .profile-social { font-size: .95rem; }
+}
+
+/* Floating resume button (duplicate access) */
+.resume-fab { position: fixed; right: 24px; top: 24px; z-index: 1300; background: var(--gradient-accent); color:#0f172a; border:none; padding: 10px 18px; border-radius: 14px; font-weight:600; font-size:.7rem; letter-spacing:.5px; cursor:pointer; box-shadow: var(--shadow); display:inline-flex; align-items:center; gap:6px; }
+.resume-fab:hover { filter: brightness(1.05); transform: translateY(-2px); }
+.resume-fab:focus { outline:2px solid var(--brand); outline-offset:3px; }
+
 /* Typing / accent text reused in sidebar */
 .typed-container { min-height: 42px; margin-bottom: 4px; }
 .typed-text { font-size: 1rem; font-weight:600; background: var(--gradient-accent); -webkit-background-clip:text; background-clip:text; color:transparent; letter-spacing:.5px; }
