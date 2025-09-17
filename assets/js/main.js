@@ -15,23 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Removed legacy mobile nav & style variant toggle (two-column layout now)
 
-    // Collapsible Skills Toggle
-    const skillsToggle = document.getElementById('skillsToggle');
-    const extendedSkills = document.getElementById('extendedSkills');
-    if (skillsToggle && extendedSkills) {
-        skillsToggle.addEventListener('click', () => {
-            const expanded = skillsToggle.getAttribute('aria-expanded') === 'true';
-            const nextState = !expanded;
-            skillsToggle.setAttribute('aria-expanded', String(nextState));
-            if (nextState) {
-                extendedSkills.hidden = false;
-                skillsToggle.textContent = 'Hide Additional Skills';
-            } else {
-                extendedSkills.hidden = true;
-                skillsToggle.textContent = 'Show More Skills';
-            }
-        });
-    }
+    // Skills section now always visible; removed collapsible toggle logic.
 
     // AI Chat Assistant (Rule-based resume Q&A)
     const launcher = document.getElementById('chatLauncher');

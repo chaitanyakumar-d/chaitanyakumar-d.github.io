@@ -158,12 +158,10 @@ section { padding: 90px 0 84px; position: relative; }
 .core-stack { background: var(--elev-1); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px 26px 20px; box-shadow: var(--shadow); }
 .core-stack h3 { margin: 0 0 10px; font-size: 1.15rem; letter-spacing: .01em; }
 .core-line { margin: 0; font-weight: 500; line-height: 1.55; }
-.toggle-skills { margin: 20px auto 0; display: inline-flex; align-items: center; gap: 8px; background: var(--gradient-accent); color: #0f172a; border: none; padding: 12px 20px; font-weight: 600; border-radius: 999px; cursor: pointer; box-shadow: var(--shadow); transition: var(--transition); }
-.toggle-skills:hover { transform: translateY(-2px); }
-.extended-skills { margin-top: 24px; background: var(--elev-1); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px 24px 18px; box-shadow: var(--shadow); }
+.extended-skills { margin-top: 12px; background: var(--elev-1); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px 24px 18px; box-shadow: var(--shadow); }
 .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
 .skill-tags span { background: color-mix(in oklab, var(--brand) 12%, transparent); color: var(--brand); padding: 6px 12px; border-radius: 999px; font-size: .8rem; font-weight: 600; letter-spacing: .02em; border: 1px solid color-mix(in oklab, var(--brand) 25%, var(--border)); }
-.extended-skills[hidden] { display: none; }
+/* hidden state removed (always visible) */
 
 /* Experience */
 .experience-timeline { position: relative; }
@@ -242,3 +240,9 @@ footer .to-top:hover { text-decoration: underline; }
 footer .chat-hint-btn { background:none; border:none; color:var(--brand); cursor:pointer; font-weight:600; }
 footer .chat-hint-btn:hover { text-decoration: underline; }
 footer .chat-hint-btn:focus { outline:2px solid var(--brand); outline-offset:2px; border-radius:6px; }
+
+/* About section typography refinement */
+.about .about-content p { font-family: 'Source Serif 4', serif; font-size: 1.02rem; line-height: 1.72; font-weight: 400; letter-spacing: .15px; color: var(--text); margin-bottom: 1.15rem; }
+.about .about-content h3 { font-family: 'Sora', sans-serif; font-size: 0.95rem; letter-spacing: .6px; text-transform: uppercase; color: var(--brand); margin: 0 0 8px; }
+.about .about-content p strong { font-weight:600; background: var(--gradient-accent); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.about .education-condensed p { font-size: .95rem; font-family: 'Plus Jakarta Sans', sans-serif; }
