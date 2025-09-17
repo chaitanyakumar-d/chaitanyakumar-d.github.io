@@ -31,14 +31,22 @@ html, body { height: 100%; }
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background: radial-gradient(circle at 20% 20%, #15253a 0%, #0f172a 55%) fixed;
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.68;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'tnum' 1;
   display: flex;
 }
+/* Typography enhancements */
+h1, h2, h3, .section-title, .profile-name { font-family: 'Sora', 'Plus Jakarta Sans', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; letter-spacing: -0.6px; }
+h1, .profile-name { font-weight:700; }
+h2, .section-title { font-weight:600; }
+h3 { font-weight:600; }
+.profile-nav a { font-size:.8rem; letter-spacing:.35px; }
+.hl-value { font-feature-settings: 'tnum' 1; }
 
 /* Global elements */
 a { color: var(--brand); text-decoration: none; }
