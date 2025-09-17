@@ -48,7 +48,7 @@ section { padding: 90px 0 84px; position: relative; }
 .section-title { text-align: center; font-size: 2.25rem; margin: 0 0 36px; letter-spacing: -0.02em; }
 
 /* Two-column Layout */
-.profile-pane { position: fixed; top: 0; left: 0; bottom: 0; width: var(--sidebar-width); padding: 40px 34px 44px; display: flex; flex-direction: column; gap: 22px; background: linear-gradient(160deg, var(--surface) 0%, var(--surface-alt) 70%); border-right: 1px solid var(--border); box-shadow: inset -1px 0 0 var(--border-alt), var(--shadow); overflow: hidden; }
+.profile-pane { position: fixed; top: 0; left: 0; bottom: 0; width: var(--sidebar-width); padding: 40px 34px 44px; display: flex; flex-direction: column; gap: 22px; background: linear-gradient(160deg, var(--surface) 0%, var(--surface-alt) 70%); border-right: 1px solid var(--border); box-shadow: inset -1px 0 0 var(--border-alt), var(--shadow); overflow: hidden; -webkit-user-select:none; user-select:none; }
 .profile-inner { display: flex; flex-direction: column; gap: 20px; }
 .brand-initial { width: 56px; height: 56px; border-radius: 16px; background: var(--gradient-accent); display: grid; place-items: center; font-weight: 700; letter-spacing: -0.02em; font-size: 1.15rem; color: #0f172a; box-shadow: var(--glow); }
 .profile-name { font-size: 1.9rem; letter-spacing: -0.02em; margin: 0; background: var(--gradient-accent); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 700; }
@@ -68,6 +68,8 @@ section { padding: 90px 0 84px; position: relative; }
 .profile-social { display:flex; gap:14px; font-size:1.2rem; }
 .profile-social a { color: var(--text-muted); transition:var(--transition); }
 .profile-social a:hover { color: var(--brand); transform:translateY(-2px); }
+.resume-download { margin-top: 2px; }
+.resume-download .btn.small { width:100%; justify-content:center; text-align:center; }
 .content-pane { margin-left: var(--sidebar-width); flex:1; min-height:100vh; }
 
 /* Profile Photo (Perfect Circle) */
