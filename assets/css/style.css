@@ -26,6 +26,40 @@
 }
 
 
+
+/* Reset & Global Base */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: radial-gradient(circle at 20% 20%, #19232b 0%, #0f1114 55%) fixed;
+  color: var(--text);
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'tnum' 1;
+  display: flex;
+}
+
+/* Typography */
+h1, h2, h3, .section-title, .profile-name {
+  font-family: 'Sora', 'Plus Jakarta Sans', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  letter-spacing: -0.6px;
+}
+h1, .profile-name { font-weight:700; }
+h2, .section-title { font-weight:600; }
+h3 { font-weight:600; }
+.profile-nav a { font-size:.8rem; letter-spacing:.35px; }
+.hl-value { font-feature-settings: 'tnum' 1; }
+
+/* Global elements */
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { max-width: var(--content-max); margin: 0 auto; padding: 0 26px; }
+
+/* Sections */
 section { padding: 90px 0 84px; position: relative; }
 .section-title { text-align: center; font-size: 2.25rem; margin: 0 0 36px; letter-spacing: -0.02em; }
 
@@ -182,9 +216,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 /* Footer extras */
 footer .to-top { color: var(--brand); text-decoration: none; font-weight:600; }
 footer .to-top:hover { text-decoration: underline; }
-footer .chat-hint-btn { background:none; border:none; color:var(--brand); cursor:pointer; font-weight:600; }
-footer .chat-hint-btn:hover { text-decoration: underline; }
-footer .chat-hint-btn:focus { outline:2px solid var(--brand); outline-offset:2px; border-radius:6px; }
 
 /* About section typography refinement */
 .about .about-content p { font-family: 'Source Serif 4', serif; font-size: 1.02rem; line-height: 1.72; font-weight: 400; letter-spacing: .15px; color: var(--text); margin-bottom: 1.15rem; }
