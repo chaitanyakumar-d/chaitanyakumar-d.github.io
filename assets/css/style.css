@@ -134,6 +134,7 @@ section { padding: 90px 0 84px; position: relative; }
 
 /* Static title (replaces typed effect) */
 .static-title { font-size: 1rem; font-weight:600; background: var(--gradient-accent); -webkit-background-clip:text; background-clip:text; color:transparent; letter-spacing:.5px; margin-top:-4px; }
+.passion-line { font-size:.63rem; letter-spacing:.55px; font-weight:600; text-transform:uppercase; color:var(--text-muted); background:rgba(94,231,223,0.08); border:1px solid var(--border); padding:8px 10px 7px; border-radius:12px; line-height:1.4; }
 /* Buttons */
 .hero-btns { margin-top: 26px; }
 .btn { display: inline-block; padding: 12px 18px; border-radius: 12px; font-weight: 600; letter-spacing: .01em; box-shadow: var(--shadow); transition: var(--transition); margin: 0 6px; border: 1px solid var(--border); }
@@ -169,10 +170,16 @@ section { padding: 90px 0 84px; position: relative; }
 
 /* Experience */
 .experience-timeline { position: relative; }
-.exp-item { padding: 22px; margin-bottom: 18px; }
+.exp-item { padding: 16px 18px 14px; margin-bottom: 14px; }
 .exp-item:hover { transform: translateY(-2px); }
 .company { color: var(--text-muted); }
 .period { color: var(--text-muted); font-size: .95rem; }
+/* Compact experience list */
+.exp-item ul.achievements { margin: 10px 0 4px; padding-left: 18px; }
+.exp-item ul.achievements li { margin-bottom: 4px; line-height: 1.45; font-size: .83rem; }
+.exp-item h3 { margin: 0 0 4px; font-size: 1.05rem; }
+.exp-item .company { font-size: .75rem; letter-spacing:.5px; text-transform: uppercase; font-weight:600; }
+.exp-item .period { font-size: .7rem; letter-spacing:.5px; }
 
 /* Projects */
 .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
