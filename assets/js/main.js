@@ -52,52 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
         yearEl.textContent = new Date().getFullYear();
     }
 
-    // Mobile Menu Toggle with ARIA
-    const menuBtn = document.querySelector('.menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-    if (menuBtn && navLinks) {
-        menuBtn.addEventListener('click', () => {
-            const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
-            menuBtn.setAttribute('aria-expanded', String(!expanded));
-            navLinks.classList.toggle('active');
-            menuBtn.classList.toggle('active');
-        });
-    }
-
-    // Removed dark mode toggle logic (simplified to single light theme)
-    const body = document.body;
-
-    // Style toggle (Glass vs Neumorphic vs Mixed)
-    const styleBtn = document.querySelector('.style-toggle');
-    const savedStyle = localStorage.getItem('style') || 'glass';
-
-    function setStyleClass(style) {
-        body.classList.remove('style-glass', 'style-neo', 'style-mixed');
-        if (style === 'neo') body.classList.add('style-neo');
-        else if (style === 'mixed') body.classList.add('style-mixed');
-        else body.classList.add('style-glass');
-        if (styleBtn) {
-            const map = { glass: { icon: 'fa-magic', title: 'Switch to Neumorphism' }, neo: { icon: 'fa-layer-group', title: 'Switch to Mixed' }, mixed: { icon: 'fa-clone', title: 'Switch to Glass' } };
-            const cfg = map[style];
-            styleBtn.innerHTML = `<i class="fas ${cfg.icon}"></i>`;
-            styleBtn.setAttribute('title', cfg.title);
-        }
-    }
-
-    function nextStyle(current) {
-        return current === 'glass' ? 'neo' : current === 'neo' ? 'mixed' : 'glass';
-    }
-
-    setStyleClass(savedStyle);
-
-    if (styleBtn) {
-        styleBtn.addEventListener('click', () => {
-            const current = body.classList.contains('style-neo') ? 'neo' : body.classList.contains('style-mixed') ? 'mixed' : 'glass';
-            const next = nextStyle(current);
-            setStyleClass(next);
-            localStorage.setItem('style', next);
-        });
-    }
+    // Removed legacy mobile nav & style variant toggle (two-column layout now)
 
     // Collapsible Skills Toggle
     const skillsToggle = document.getElementById('skillsToggle');
@@ -546,17 +501,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Active Navigation Highlighting
 window.addEventListener('scroll', () => {
     let current = '';
-    const sections = document.querySelectorAll('section');
-    
+    const sections = document.querySelectorAll('main section');
     sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= (sectionTop - sectionHeight/3)) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= window.innerHeight * 0.33 && rect.bottom > window.innerHeight * 0.33) {
             current = section.getAttribute('id');
         }
     });
-
-    document.querySelectorAll('.nav-links a').forEach(link => {
+    document.querySelectorAll('.nav-vertical a').forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href').slice(1) === current) {
             link.classList.add('active');

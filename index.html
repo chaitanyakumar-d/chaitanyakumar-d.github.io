@@ -40,61 +40,44 @@
         </script>
 </head>
 <body>
-    <a class="skip-link" href="#home">Skip to content</a>
-    <!-- Navbar -->
-    <nav class="navbar" role="navigation" aria-label="Main Navigation">
-        <div class="nav-content">
-            <div class="logo">CD</div>
-            <div class="nav-links" id="primary-navigation">
-                <a href="#home" class="active">Home</a>
-                <a href="#about">About</a>
-                <a href="#experience">Experience</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-            </div>
-            <div class="nav-actions">
-                <button class="menu-btn" aria-label="Toggle navigation menu" aria-controls="primary-navigation" aria-expanded="false">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <button class="style-toggle" aria-label="Toggle style" title="Toggle style">
-                    <i class="fas fa-magic"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
+    <a class="skip-link" href="#mainContent">Skip to content</a>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content" data-aos="fade-up">
-            <div class="hero-text">
-                <h1>Chaitanya Dasari</h1>
-                <div class="typed-container">
-                    <span class="typed-text"></span><span class="cursor">&nbsp;</span>
-                </div>
-                <p>Crafting AI solutions that drive business value</p>
-                <div class="hero-highlights" aria-label="Highlights">
-                    <div class="highlight"><span class="label">Experience:</span><span class="value">5+ years</span></div>
-                    <div class="highlight"><span class="label">LLMs:</span><span class="value">GPT-4, RAG, Agents</span></div>
-                    <div class="highlight"><span class="label">Cloud/Data:</span><span class="value">GCP, Azure, AWS</span></div>
-                </div>
-                <div class="hero-btns">
-                    <a href="#projects" class="btn primary">View Projects</a>
-                    <a href="mailto:chaitanyadasari09@outlook.com" class="btn secondary">Email Me</a>
-                </div>
+    <!-- Fixed Profile Sidebar -->
+    <aside class="profile-pane" aria-label="Profile sidebar">
+        <div class="profile-inner" data-aos="fade-right">
+            <div class="brand-initial" aria-hidden="true">CD</div>
+            <h1 class="profile-name">Chaitanya Dasari</h1>
+            <div class="typed-container">
+                <span class="typed-text"></span><span class="cursor">&nbsp;</span>
             </div>
-            <div class="social-links">
-                <a href="https://github.com/chaitanyakumar-d" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com/in/chaitanyakumard" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:chaitanyadasari09@outlook.com"><i class="fas fa-envelope"></i></a>
+            <p class="tagline">Crafting AI solutions that drive business value</p>
+            <div class="profile-highlights" aria-label="Highlights">
+                <div><span class="hl-label">Experience</span><span class="hl-value">5+ yrs</span></div>
+                <div><span class="hl-label">LLMs</span><span class="hl-value">GPT-4 · RAG</span></div>
+                <div><span class="hl-label">Cloud</span><span class="hl-value">GCP · Azure · AWS</span></div>
+            </div>
+            <nav class="profile-nav" aria-label="Section navigation">
+                <ul class="nav-vertical">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                </ul>
+            </nav>
+            <div class="profile-actions">
+                <a href="#projects" class="btn primary small">Projects</a>
+                <a href="mailto:chaitanyadasari09@outlook.com" class="btn secondary small">Email</a>
+            </div>
+            <div class="profile-social">
+                <a aria-label="GitHub" href="https://github.com/chaitanyakumar-d" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a aria-label="LinkedIn" href="https://linkedin.com/in/chaitanyakumard" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                <a aria-label="Email" href="mailto:chaitanyadasari09@outlook.com"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <div class="mouse"></div>
-            <p>Scroll Down</p>
-        </div>
-    </section>
+    </aside>
+
+    <!-- Main Scrollable Content -->
+    <main id="mainContent" class="content-pane" tabindex="-1">
 
     <!-- About Section -->
    <section id="about" class="about">
@@ -275,6 +258,8 @@
 
     <!-- Floating Back To Top Button -->
     <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
+
+    </main>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js" defer></script>
