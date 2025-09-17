@@ -199,7 +199,7 @@ section { padding: 90px 0 84px; position: relative; }
 /* Footer */
 footer { background: var(--surface); border-top: 1px solid var(--border); padding: 32px 0; text-align: center; color: var(--text-muted); }
 /* Floating Back To Top */
-.back-to-top { position: fixed; bottom: 96px; left: 24px; width: 46px; height: 46px; border-radius: 14px; border: 1px solid var(--border); background: var(--surface-alt); color: var(--brand); font-weight: 700; font-size: 1.05rem; cursor: pointer; box-shadow: var(--shadow); display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(12px) scale(.9); pointer-events: none; transition: opacity .45s ease, transform .45s ease, background .3s; }
+.back-to-top { position: fixed; bottom: 40px; left: 24px; width: 46px; height: 46px; border-radius: 14px; border: 1px solid var(--border); background: var(--surface-alt); color: var(--brand); font-weight: 700; font-size: 1.05rem; cursor: pointer; box-shadow: var(--shadow); display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(12px) scale(.9); pointer-events: none; transition: opacity .45s ease, transform .45s ease, background .3s; }
 .back-to-top.visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
 .back-to-top:hover { background: var(--gradient-accent); color:#0f172a; }
 .back-to-top:focus { outline:2px solid var(--accent-ring); outline-offset:2px; }
