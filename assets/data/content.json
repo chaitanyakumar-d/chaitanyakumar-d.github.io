@@ -1,0 +1,95 @@
+{
+  "profile": {
+    "name": "Chaitanya Dasari",
+    "title": "Sr. Data Scientist",
+    "passion": "5+ yrs • ML Engineering • Gen AI • Agentic AI • Data Engineering • Data Analysis",
+    "photo": "assets/picture/profile.png",
+    "links": {
+      "github": "https://github.com/chaitanyakumar-d",
+      "linkedin": "https://linkedin.com/in/chaitanyakumard",
+      "email": "mailto:chaitanyadasari09@outlook.com"
+    },
+    "location": "Eden Prairie, MN",
+    "resume": "assets/resume/Chaitanya_Dasari_DataScientist.pdf"
+  },
+  "about": {
+    "professional": "I am a <strong>Senior Data Scientist</strong> with <strong>5 years</strong> of experience building and deploying end-to-end AI solutions from concept to production. I specialize in <strong>Large Language Models (LLMs)</strong> including <strong>RAG with GPT-4</strong> and <strong>generative AI</strong> pipelines, with a proven track record of business impact—reducing manual analysis by <strong>40%</strong> and optimizing automated trading strategies. Highly skilled in <strong>Python</strong>, <strong>SQL</strong>, and cloud-native data science on <strong>GCP</strong>, <strong>Azure</strong>, and <strong>AWS</strong>.",
+    "personal": "When I’m not working, I spend my time traveling to new places, hiking through scenic trails, and hitting the gym 4 days a week to stay active and healthy. I’m always inspired by innovative ideas, and I enjoy researching new technologies to stay ahead in the field.",
+    "education": "<strong>M.S. Data Analytics</strong>, Concordia University St. Paul (GPA 3.91) &mdash; <strong>B.Sc.</strong>, Nizam College (GPA 8.22)"
+  },
+  "experience": [
+    {
+      "role": "Senior Data Scientist",
+      "company": "Piper Sandler, USA",
+      "period": "Apr 2024 – Present",
+      "bullets": [
+        "Deployed GPT-4 + RAG research assistant cutting analyst turnaround time by <strong>50%</strong> and accelerating insight generation.",
+        "Built Neo4j knowledge graph + LLM retrieval layer enabling richer financial context extraction and fraud signal discovery.",
+        "Prototyped autonomous trading / risk agents improving backtested risk-adjusted returns by <strong>15%</strong> while informing production roadmap.",
+        "Implemented graph + NLP fraud pipeline increasing precision by <strong>20%</strong> and reducing manual review noise."
+      ],
+      "tags": "Keywords: GPT-4, RAG, Neo4j, Agents, Fraud"
+    },
+    {
+      "role": "Graduate Research Assistant",
+      "company": "Concordia University, St. Paul",
+      "period": "Nov 2023 – Mar 2024",
+      "bullets": [
+        "Engineered retention model (Scikit-learn) achieving <strong>88%</strong> accuracy informing student success interventions.",
+        "Co-authored AI ethics grant proposal securing <strong>$50K</strong> in funding for responsible AI research.",
+        "Performed large-scale social media NLP (SpaCy, NLTK) extracting sentiment + engagement drivers for strategic dashboards."
+      ],
+      "tags": "Keywords: Retention, NLP, Grants"
+    },
+    {
+      "role": "Data Scientist (Functioned as ML Engineer)",
+      "company": "Infosys — Client: CVS Aetna (Healthcare)",
+      "period": "Jun 2022 – Aug 2023",
+      "bullets": [
+        "Built patient segmentation (K-Means, DBSCAN) reducing 30-day readmissions by <strong>12%</strong> for targeted interventions.",
+        "Delivered cost & risk models (XGBoost/Random Forest on Vertex AI) reaching <strong>85%</strong> accuracy for actuarial planning.",
+        "Applied BERT for clinical entity extraction improving risk scoring and accelerating care gap closure.",
+        "Generated compliant synthetic data (GANs) enabling privacy-preserving experimentation."
+      ],
+      "tags": "Keywords: Vertex AI, BERT, Segmentation, GANs"
+    },
+    {
+      "role": "Data Scientist (Functioned as ML Engineer)",
+      "company": "Infosys — Client: Charles Schwab (Financial Services)",
+      "period": "Jun 2022 – Aug 2023",
+      "bullets": [
+        "Implemented agentic automation (ETL + anomaly detection) streamlining workflows and reducing manual oversight.",
+        "Developed LLM chatbot prototypes + fine-tuning experiments to evaluate conversational servicing use cases.",
+        "Optimized Databricks pipelines cutting processing time by <strong>30%</strong> and improving availability of fraud signals.",
+        "Applied ML for fraud and segmentation enhancing client risk stratification and retention strategies."
+      ],
+      "tags": "Keywords: Agents, LLM, Databricks, Fraud"
+    },
+    {
+      "role": "Data Analyst",
+      "company": "Twilight Software Solutions, Hyderabad, India",
+      "period": "Oct 2019 – Jun 2022",
+      "bullets": [
+        "Developed churn & demand forecasting models with robust data quality controls improving retention targeting.",
+        "Applied statistical techniques + PCA to enhance signal-to-noise and model generalization.",
+        "Engineered ETL pipelines and warehouses powering BI and executive KPIs.",
+        "Built interactive Tableau dashboards accelerating decision cycles for stakeholders."
+      ],
+      "tags": "Keywords: Churn, Forecasting, PCA, Dashboards"
+    }
+  ],
+  "skills": {
+    "core": "Python · SQL · Machine Learning · LLMs · Spark · Cloud (GCP · Azure · AWS) · Databricks · Neo4j",
+    "tags": [
+      "PyTorch","Scikit-learn","XGBoost","TensorFlow","LangChain","Hugging Face","Vertex AI","SageMaker","Azure ML","ETL","Data Pipelines","Feature Engineering","Graph Analytics","NLP","Recommenders","Time Series","Bayesian","Forecasting","Segmentation","GANs","CI/CD","MLOps","Model Monitoring","Tableau","Power BI","Dashboards","API Integration","Git","Leadership","Mentorship"
+    ]
+  },
+  "projects": [
+    {
+      "name": "ChatGPT NLP Analyzer",
+      "description": "A sophisticated web-based NLP tool leveraging OpenAI's GPT-3.5 API for text analysis and processing.",
+      "stack": ["OpenAI API","Python","Streamlit","NLP"],
+      "url": "https://github.com/chaitanyakumar-d/chatgpt-nlp-analyzer"
+    }
+  ]
+}
