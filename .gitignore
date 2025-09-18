@@ -1,3 +1,6 @@
+# Local Python virtual environments
+.venv/
+.venv_resume/
 # Environment & secrets
 .env
 .env.*
