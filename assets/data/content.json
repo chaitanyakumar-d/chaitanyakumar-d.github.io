@@ -1,7 +1,7 @@
 {
   "profile": {
     "name": "Chaitanya Dasari",
-    "title": "Sr. Data Scientist",
+    "title": "Data Scientist",
     "passion": "5+ yrs • ML Engineering • Gen AI • Agentic AI • Data Engineering • Data Analysis",
     "photo": "assets/picture/profile.png",
     "links": {
@@ -19,9 +19,9 @@
   },
   "experience": [
     {
-      "role": "Senior Data Scientist",
+      "role": "Data Scientist",
       "company": "Piper Sandler, USA",
-      "period": "Apr 2024 – Present",
+      "period": "Apr 2024 – July 2025",
       "bullets": [
         "Deployed GPT-4 + RAG research assistant cutting analyst turnaround time by <strong>50%</strong> and accelerating insight generation.",
         "Built Neo4j knowledge graph + LLM retrieval layer enabling richer financial context extraction and fraud signal discovery.",
