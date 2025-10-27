@@ -105,6 +105,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
+      const certGrid = document.querySelector('.certifications .certifications-grid');
+      if (certGrid && Array.isArray(data.certifications)) {
+        certGrid.innerHTML = '';
+        data.certifications.forEach((cert, i) => {
+          const card = document.createElement('div'); 
+          card.className = 'cert-card'; 
+          card.setAttribute('data-aos','zoom-in');
+          if (i > 0) card.setAttribute('data-aos-delay', (i * 100).toString());
+          card.innerHTML = `
+            <i class="${cert.icon ?? 'fas fa-certificate'} cert-icon"></i>
+            <h3>${cert.name ?? ''}</h3>
+            <p class="cert-issuer">${cert.issuer ?? ''}</p>
+          `;
+          certGrid.appendChild(card);
+        });
+      }
+
       if (window.AOS && typeof AOS.refreshHard === 'function') setTimeout(() => AOS.refreshHard(), 50);
     })
     .catch(() => {});

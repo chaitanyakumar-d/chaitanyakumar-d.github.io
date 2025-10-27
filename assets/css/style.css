@@ -191,6 +191,14 @@ section { padding: 90px 0 84px; position: relative; }
 .tech-stack { margin: 10px 0; }
 .tech-stack span { display: inline-block; padding: 6px 10px; background: rgba(94,231,223,0.12); border: 1px solid rgba(94,231,223,0.3); color: var(--brand); border-radius: 999px; margin: 2px; font-size: .8rem; letter-spacing:.3px; }
 
+/* Certifications */
+.certifications-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 24px; }
+.cert-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 28px 20px; text-align: center; transition: all 0.3s ease; }
+.cert-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--brand); }
+.cert-icon { font-size: 2.5rem; color: var(--brand); margin-bottom: 14px; }
+.cert-card h3 { font-size: 1.05rem; margin: 8px 0; font-weight: 600; color: var(--text); }
+.cert-issuer { font-size: 0.85rem; color: var(--text-muted); margin: 0; font-weight: 500; }
+
 /* Contact */
 /* (Removed legacy .contact-item styles in favor of compact layout) */
 

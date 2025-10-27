@@ -2,33 +2,45 @@
   "profile": {
     "name": "Chaitanya Dasari",
     "title": "Data Scientist",
-    "passion": "5+ yrs • ML Engineering • Gen AI • Agentic AI • Data Engineering • Data Analysis",
+    "passion": "5+ yrs • ML Engineering • Gen AI • Agentic AI • LLMs • RAG Systems • Knowledge Graphs",
     "photo": "assets/picture/profile.png",
     "links": {
       "github": "https://github.com/chaitanyakumar-d",
       "linkedin": "https://linkedin.com/in/chaitanyakumard",
       "email": "mailto:chaitanyadasari09@outlook.com"
     },
-    "location": "Eden Prairie, MN",
+        "location": "Eden Prairie, MN",
     "resume": "assets/resume/Chaitanya_Dasari_DataScientist.pdf"
   },
   "about": {
-    "professional": "I am a <strong>Senior Data Scientist</strong> with <strong>5 years</strong> of experience building and deploying end-to-end AI solutions from concept to production. I specialize in <strong>Large Language Models (LLMs)</strong> including <strong>RAG with GPT-4</strong> and <strong>generative AI</strong> pipelines, with a proven track record of business impact—reducing manual analysis by <strong>40%</strong> and optimizing automated trading strategies. Highly skilled in <strong>Python</strong>, <strong>SQL</strong>, and cloud-native data science on <strong>GCP</strong>, <strong>Azure</strong>, and <strong>AWS</strong>.",
-    "personal": "When I’m not working, I spend my time traveling to new places, hiking through scenic trails, and hitting the gym 4 days a week to stay active and healthy. I’m always inspired by innovative ideas, and I enjoy researching new technologies to stay ahead in the field.",
+    "professional": "I am a <strong>Data Scientist</strong> with <strong>5 years</strong> of experience specializing in the design and production deployment of advanced AI systems. Expert in <strong>Generative AI</strong>, with hands-on experience building and scaling <strong>LLM-powered RAG systems</strong>, <strong>autonomous agents (Agentic AI)</strong>, and <strong>knowledge graphs (Neo4j)</strong>. Proven track record of delivering measurable business value, including a <strong>15% reduction in churn</strong> and a <strong>50% reduction in analyst research time</strong>. Highly skilled in <strong>Python</strong>, <strong>SQL</strong>, and <strong>MLOps</strong> on <strong>Azure</strong>, <strong>GCP</strong>, and <strong>AWS</strong>.",
+    "personal": "When I'm not working, I spend my time traveling to new places, hiking through scenic trails, and hitting the gym 4 days a week to stay active and healthy. I'm always inspired by innovative ideas, and I enjoy researching new technologies to stay ahead in the field.",
     "education": "<strong>M.S. Data Analytics</strong>, Concordia University St. Paul (GPA 3.91) &mdash; <strong>B.Sc.</strong>, Nizam College (GPA 8.22)"
   },
   "experience": [
     {
       "role": "Data Scientist",
+      "company": "AT&T, Dallas, TX",
+      "period": "July 2025 – Present",
+      "bullets": [
+        "Reduced voluntary churn by <strong>15%</strong> by designing, building, and deploying an end-to-end predictive model using XGBoost and Python.",
+        "Generated natural-language summaries explaining churn drivers by building a Generative AI assistant using RAG to analyze unstructured support tickets and call transcripts.",
+        "Automated proactive retention by deploying an agentic AI system using the <strong>Model Context Protocol (MCP)</strong> to query CRM/Billing APIs and trigger interventions securely.",
+        "Ensured model reliability and scalability by engineering the complete MLOps pipeline on Azure Databricks and MLflow for real-time feature engineering, inference, and monitoring."
+      ],
+      "tags": "Keywords: XGBoost, RAG, MCP, Agentic AI, Azure Databricks"
+    },
+    {
+      "role": "Data Scientist",
       "company": "Piper Sandler, USA",
       "period": "Apr 2024 – July 2025",
       "bullets": [
-        "Deployed GPT-4 + RAG research assistant cutting analyst turnaround time by <strong>50%</strong> and accelerating insight generation.",
-        "Built Neo4j knowledge graph + LLM retrieval layer enabling richer financial context extraction and fraud signal discovery.",
-        "Prototyped autonomous trading / risk agents improving backtested risk-adjusted returns by <strong>15%</strong> while informing production roadmap.",
-        "Implemented graph + NLP fraud pipeline increasing precision by <strong>20%</strong> and reducing manual review noise."
+        "Reduced financial analyst research time by <strong>50%</strong> by deploying an LLM-powered assistant (GPT-4, RAG) to query and summarize financial documents.",
+        "Enhanced context retrieval and RAG output accuracy by building a Neo4j Knowledge Graph integrated with LLM embedding models.",
+        "Improved risk-adjusted returns by <strong>15%</strong> (backtested) by designing autonomous trading agents in Python to detect market anomalies and execute hedging strategies.",
+        "Boosted fraud identification precision by <strong>20%</strong> by architecting a detection pipeline combining Graph-Based (Neo4j) community detection with NLP sentiment analysis."
       ],
-      "tags": "Keywords: GPT-4, RAG, Neo4j, Agents, Fraud"
+      "tags": "Keywords: GPT-4, RAG, Neo4j, Agents, Trading"
     },
     {
       "role": "Graduate Research Assistant",
@@ -46,42 +58,42 @@
       "company": "Infosys — Client: CVS Aetna (Healthcare)",
       "period": "Jun 2022 – Aug 2023",
       "bullets": [
-        "Built patient segmentation (K-Means, DBSCAN) reducing 30-day readmissions by <strong>12%</strong> for targeted interventions.",
-        "Delivered cost & risk models (XGBoost/Random Forest on Vertex AI) reaching <strong>85%</strong> accuracy for actuarial planning.",
-        "Applied BERT for clinical entity extraction improving risk scoring and accelerating care gap closure.",
-        "Generated compliant synthetic data (GANs) enabling privacy-preserving experimentation."
+        "Reduced patient readmissions by <strong>12%</strong> by building and deploying a patient segmentation model (K-Means, DBSCAN) on claims data to enable targeted care programs.",
+        "Identified high-cost claimants with <strong>85%</strong> accuracy by developing predictive models (XGBoost, Random Forest) on GCP Vertex AI.",
+        "Improved patient risk scoring by applying BERT-based NLP to extract clinical entities from provider notes.",
+        "Engineered HIPAA-compliant ETL pipelines (Azure Data Factory) integrating claims, EHR, and pharmacy data.",
+        "Used GANs for synthetic data generation, supporting privacy-preserving healthcare analytics."
       ],
-      "tags": "Keywords: Vertex AI, BERT, Segmentation, GANs"
+      "tags": "Keywords: Vertex AI, BERT, Segmentation, GANs, Healthcare"
     },
     {
       "role": "Data Scientist (Functioned as ML Engineer)",
       "company": "Infosys — Client: Charles Schwab (Financial Services)",
       "period": "Jun 2022 – Aug 2023",
       "bullets": [
-        "Implemented agentic automation (ETL + anomaly detection) streamlining workflows and reducing manual oversight.",
-        "Developed LLM chatbot prototypes + fine-tuning experiments to evaluate conversational servicing use cases.",
-        "Optimized Databricks pipelines cutting processing time by <strong>30%</strong> and improving availability of fraud signals.",
-        "Applied ML for fraud and segmentation enhancing client risk stratification and retention strategies."
+        "Explored Generative AI capabilities by building prototype LLM-based chatbot workflows and fine-tuning open-source transformer models.",
+        "Improved data pipeline efficiency by building agentic automation for ETL and anomaly detection using Databricks and Python.",
+        "Reduced data processing time by <strong>30%</strong> by optimizing analysis pipelines in Databricks.",
+        "Applied ML for fraud detection and client segmentation enhancing risk stratification and retention strategies."
       ],
-      "tags": "Keywords: Agents, LLM, Databricks, Fraud"
+      "tags": "Keywords: LLM, Agentic AI, Databricks, Fraud, FinTech"
     },
     {
       "role": "Data Analyst",
       "company": "Twilight Software Solutions, Hyderabad, India",
       "period": "Oct 2019 – Jun 2022",
       "bullets": [
-        "Developed churn & demand forecasting models with robust data quality controls improving retention targeting.",
-        "Applied statistical techniques + PCA to enhance signal-to-noise and model generalization.",
-        "Engineered ETL pipelines and warehouses powering BI and executive KPIs.",
-        "Built interactive Tableau dashboards accelerating decision cycles for stakeholders."
+        "Strengthened model accuracy for churn and demand forecasting models by applying statistical methods and PCA for dimensionality reduction.",
+        "Supported all business intelligence reporting by building and managing scalable ETL pipelines and data warehouses.",
+        "Tracked critical business KPIs for leadership by developing and maintaining interactive dashboards in Tableau."
       ],
-      "tags": "Keywords: Churn, Forecasting, PCA, Dashboards"
+      "tags": "Keywords: Churn, Forecasting, PCA, Tableau, BI"
     }
   ],
   "skills": {
-    "core": "Python · SQL · Machine Learning · LLMs · Spark · Cloud (GCP · Azure · AWS) · Databricks · Neo4j",
+    "core": "Python · SQL · Java · R · Machine Learning · LLMs (GPT-4, Claude, LLaMA) · Generative AI · RAG · Agentic AI · Neo4j · Spark · Cloud (GCP · Azure · AWS) · Databricks",
     "tags": [
-      "PyTorch","Scikit-learn","XGBoost","TensorFlow","LangChain","Hugging Face","Vertex AI","SageMaker","Azure ML","ETL","Data Pipelines","Feature Engineering","Graph Analytics","NLP","Recommenders","Time Series","Bayesian","Forecasting","Segmentation","GANs","CI/CD","MLOps","Model Monitoring","Tableau","Power BI","Dashboards","API Integration","Git","Leadership","Mentorship"
+      "PyTorch","TensorFlow","Keras","Scikit-learn","XGBoost","Spark MLlib","LangChain","LangGraph","Hugging Face","Model Context Protocol (MCP)","Stable Diffusion","DALL·E 2","Vertex AI","SageMaker","Azure ML","Azure Databricks","MLflow","Pandas","NumPy","REST APIs","ETL Pipelines","Feature Engineering","PCA","MySQL","BigQuery","Snowflake","Redshift","Regression","Hypothesis Testing","ANOVA","Bayesian Inference","Time Series","ARIMA","Prophet","K-means","DBSCAN","Hierarchical Clustering","NLP","BERT","SpaCy","NLTK","Information Retrieval","Reinforcement Learning","Recommendation Systems","CI/CD","Git","Unit Testing","Automation","Model Deployment","Model Monitoring","Tableau","Power BI","AWS QuickSight","Matplotlib","Seaborn","Interactive Dashboards","Data Storytelling","Cross-functional Collaboration","Leadership","Technical Communication","Innovation","Agile/Scrum","Mentorship"
     ]
   },
   "projects": [
