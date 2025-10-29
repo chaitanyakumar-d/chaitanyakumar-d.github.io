@@ -2,7 +2,7 @@
   "profile": {
     "name": "Chaitanya Dasari",
     "title": "Data Scientist",
-    "passion": "5+ yrs • ML Engineering • Gen AI • Agentic AI • LLMs • RAG Systems • Knowledge Graphs",
+    "passion": "4+ yrs • ML Engineering • Gen AI • Agentic AI • LLMs • RAG Systems • Knowledge Graphs",
     "photo": "assets/picture/profile.png",
     "links": {
       "github": "https://github.com/chaitanyakumar-d",
@@ -13,70 +13,39 @@
     "resume": "assets/resume/Chaitanya_Dasari_DataScientist.pdf"
   },
   "about": {
-    "professional": "I am a <strong>Data Scientist</strong> with <strong>5 years</strong> of experience specializing in the design and production deployment of advanced AI systems. Expert in <strong>Generative AI</strong>, with hands-on experience building and scaling <strong>LLM-powered RAG systems</strong>, <strong>autonomous agents (Agentic AI)</strong>, and <strong>knowledge graphs (Neo4j)</strong>. Proven track record of delivering measurable business value, including a <strong>15% reduction in churn</strong> and a <strong>50% reduction in analyst research time</strong>. Highly skilled in <strong>Python</strong>, <strong>SQL</strong>, and <strong>MLOps</strong> on <strong>Azure</strong>, <strong>GCP</strong>, and <strong>AWS</strong>.",
+  "professional": "Machine Learning Engineer and Data Scientist with <strong>4+ years</strong> of experience delivering high-impact AI solutions from concept to production. Specialized in predictive modeling, NLP (<strong>BERT</strong>), Generative AI (<strong>LLMs</strong>), and advanced MLOps in <strong>AWS SageMaker</strong>, <strong>Databricks</strong>, and <strong>AWS Glue</strong>. Proven track record of reducing patient readmissions by <strong>12%</strong> and optimizing data pipelines for a <strong>30%</strong> reduction in processing time. Skilled in Python, SQL, Java, R, and a wide range of ML/AI frameworks. Passionate about building robust, scalable, and secure AI systems that deliver measurable business value.",
     "personal": "When I'm not working, I spend my time traveling to new places, hiking through scenic trails, and hitting the gym 4 days a week to stay active and healthy. I'm always inspired by innovative ideas, and I enjoy researching new technologies to stay ahead in the field.",
     "education": "<strong>M.S. Data Analytics</strong>, Concordia University St. Paul (GPA 3.91) &mdash; <strong>B.Sc.</strong>, Nizam College (GPA 8.22)"
   },
   "experience": [
     {
-      "role": "Data Scientist",
-      "company": "AT&T, Dallas, TX",
-      "period": "July 2025 – Present",
-      "bullets": [
-        "Reduced voluntary churn by <strong>15%</strong> by designing, building, and deploying an end-to-end predictive model using XGBoost and Python.",
-        "Generated natural-language summaries explaining churn drivers by building a Generative AI assistant using RAG to analyze unstructured support tickets and call transcripts.",
-        "Automated proactive retention by deploying an agentic AI system using the <strong>Model Context Protocol (MCP)</strong> to query CRM/Billing APIs and trigger interventions securely.",
-        "Ensured model reliability and scalability by engineering the complete MLOps pipeline on Azure Databricks and MLflow for real-time feature engineering, inference, and monitoring."
-      ],
-      "tags": "Keywords: XGBoost, RAG, MCP, Agentic AI, Azure Databricks"
-    },
-    {
-      "role": "Data Scientist",
-      "company": "Piper Sandler, USA",
-      "period": "Apr 2024 – July 2025",
-      "bullets": [
-        "Reduced financial analyst research time by <strong>50%</strong> by deploying an LLM-powered assistant (GPT-4, RAG) to query and summarize financial documents.",
-        "Enhanced context retrieval and RAG output accuracy by building a Neo4j Knowledge Graph integrated with LLM embedding models.",
-        "Improved risk-adjusted returns by <strong>15%</strong> (backtested) by designing autonomous trading agents in Python to detect market anomalies and execute hedging strategies.",
-        "Boosted fraud identification precision by <strong>20%</strong> by architecting a detection pipeline combining Graph-Based (Neo4j) community detection with NLP sentiment analysis."
-      ],
-      "tags": "Keywords: GPT-4, RAG, Neo4j, Agents, Trading"
-    },
-    {
       "role": "Graduate Research Assistant",
-      "company": "Concordia University, St. Paul",
+      "company": "Concordia University St. Paul",
       "period": "Nov 2023 – Mar 2024",
       "bullets": [
-        "Engineered retention model (Scikit-learn) achieving <strong>88%</strong> accuracy informing student success interventions.",
-        "Co-authored AI ethics grant proposal securing <strong>$50K</strong> in funding for responsible AI research.",
-        "Performed large-scale social media NLP (SpaCy, NLTK) extracting sentiment + engagement drivers for strategic dashboards."
+        "Achieved 88% accuracy by building a student retention prediction model using Python (Scikit-learn).",
+        "Co-authored a successful $50K grant proposal by researching AI ethics in healthcare.",
+        "Processed and analyzed large-scale social media text data (NLP, SpaCy, NLTK) to uncover sentiment patterns.",
+        "Designed Tableau dashboards to present findings on alum engagement, supporting strategic planning."
       ],
       "tags": "Keywords: Retention, NLP, Grants"
     },
     {
       "role": "Data Scientist (Functioned as ML Engineer)",
-      "company": "Infosys — Client: CVS Aetna (Healthcare)",
+      "company": "Infosys, India",
       "period": "Jun 2022 – Aug 2023",
       "bullets": [
-        "Reduced patient readmissions by <strong>12%</strong> by building and deploying a patient segmentation model (K-Means, DBSCAN) on claims data to enable targeted care programs.",
-        "Identified high-cost claimants with <strong>85%</strong> accuracy by developing predictive models (XGBoost, Random Forest) on GCP Vertex AI.",
+        "Served as an ML Engineer and Data Scientist on engagements with primary healthcare and financial services clients, delivering advanced AI/ML solutions.",
+        "Reduced patient readmissions by 12% by building and deploying a patient segmentation model (K-Means, DBSCAN) on claims data to enable targeted care programs.",
+        "Identified high-cost claimants with 85% accuracy by developing predictive models (XGBoost, Random Forest) on AWS SageMaker.",
         "Improved patient risk scoring by applying BERT-based NLP to extract clinical entities from provider notes.",
-        "Engineered HIPAA-compliant ETL pipelines (Azure Data Factory) integrating claims, EHR, and pharmacy data.",
-        "Used GANs for synthetic data generation, supporting privacy-preserving healthcare analytics."
-      ],
-      "tags": "Keywords: Vertex AI, BERT, Segmentation, GANs, Healthcare"
-    },
-    {
-      "role": "Data Scientist (Functioned as ML Engineer)",
-      "company": "Infosys — Client: Charles Schwab (Financial Services)",
-      "period": "Jun 2022 – Aug 2023",
-      "bullets": [
+        "Engineered HIPAA-compliant ETL pipelines (AWS Glue) integrating claims, EHR, and pharmacy data.",
+        "Used GANs for synthetic data generation, supporting privacy-preserving healthcare analytics.",
         "Explored Generative AI capabilities by building prototype LLM-based chatbot workflows and fine-tuning open-source transformer models.",
         "Improved data pipeline efficiency by building agentic automation for ETL and anomaly detection using Databricks and Python.",
-        "Reduced data processing time by <strong>30%</strong> by optimizing analysis pipelines in Databricks.",
-        "Applied ML for fraud detection and client segmentation enhancing risk stratification and retention strategies."
+        "Reduced data processing time by 30% by optimizing analysis pipelines in Databricks."
       ],
-      "tags": "Keywords: LLM, Agentic AI, Databricks, Fraud, FinTech"
+      "tags": "Keywords: SageMaker, BERT, GANs, Databricks, AWS Glue, LLMs, Healthcare, FinTech"
     },
     {
       "role": "Data Analyst",
@@ -102,6 +71,13 @@
       "description": "A sophisticated web-based NLP tool leveraging OpenAI's GPT-3.5 API for text analysis and processing.",
       "stack": ["OpenAI API","Python","Streamlit","NLP"],
       "url": "https://github.com/chaitanyakumar-d/chatgpt-nlp-analyzer"
+    }
+    ,
+    {
+      "name": "Upstox Secure Trading Chatbot",
+      "description": "A secure, modular trading chatbot leveraging Python, Streamlit, FastAPI, and Upstox API for real-time portfolio management. Highlights: <strong>LangChain</strong> agent architecture and <strong>MCP</strong> server for conversational trading and secure orchestration.",
+      "stack": ["Python", "Streamlit", "FastAPI", "LangChain", "Model Context Protocol(MCP)", "Upstox API", "Docker", "Docker Compose"],
+      "url": "https://github.com/chaitanyakumar-d/upstox-chatbot"
     }
   ]
 }
