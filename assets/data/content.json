@@ -1,8 +1,8 @@
 {
   "profile": {
     "name": "Chaitanya Dasari",
-    "title": "Data Scientist",
-    "passion": "4+ yrs • ML Engineering • Gen AI • Agentic AI • LLMs • RAG Systems • Knowledge Graphs",
+    "title": "Full Stack Data Scientist & AI Engineer",
+    "passion": "5+ yrs • Generative AI • Agentic RAG • Deep Learning • MLOps • Cloud Architecture",
     "photo": "assets/picture/profile.png",
     "links": {
       "github": "https://github.com/chaitanyakumar-d",
@@ -10,59 +10,72 @@
       "email": "mailto:chaitanyadasari09@outlook.com"
     },
         "location": "Eden Prairie, MN",
-    "resume": "assets/resume/Chaitanya_Dasari_DataScientist.pdf"
+    "resume": "assets/resume/Chaitanya_Dasari_FullStack_DataScientist.pdf"
   },
   "about": {
-  "professional": "Machine Learning Engineer and Data Scientist with <strong>4+ years</strong> of experience delivering high-impact AI solutions from concept to production. Specialized in predictive modeling, NLP (<strong>BERT</strong>), Generative AI (<strong>LLMs</strong>), and advanced MLOps in <strong>AWS SageMaker</strong>, <strong>Databricks</strong>, and <strong>AWS Glue</strong>. Proven track record of reducing patient readmissions by <strong>12%</strong> and optimizing data pipelines for a <strong>30%</strong> reduction in processing time. Skilled in Python, SQL, Java, R, and a wide range of ML/AI frameworks. Passionate about building robust, scalable, and secure AI systems that deliver measurable business value.",
+  "professional": "<strong>Full Stack Data Scientist</strong> and <strong>AI Engineer</strong> with <strong>5+ years</strong> of experience architecting scalable <strong>Generative AI</strong> and <strong>ML systems</strong> for Microsoft and Fortune 500 clients. Expert in building end-to-end <strong>Agentic RAG pipelines</strong> and autonomous systems using <strong>GPT-4</strong>, <strong>LangGraph</strong>, and <strong>Vector Databases</strong> handling <strong>10TB+</strong> of enterprise data. Proven track record of bridging the gap between research and production—deploying <strong>Deep Learning models</strong> via <strong>Docker/Kubernetes</strong> and robust <strong>CI/CD pipelines</strong> to serve <strong>100,000+ daily users</strong>. Passionate about optimizing inference latency (sub-200ms) and driving AI safety in high-stakes environments.",
     "personal": "When I'm not working, I spend my time traveling to new places, hiking through scenic trails, and hitting the gym 4 days a week to stay active and healthy. I'm always inspired by innovative ideas, and I enjoy researching new technologies to stay ahead in the field.",
     "education": "<strong>M.S. Data Analytics</strong>, Concordia University St. Paul (GPA 3.91) &mdash; <strong>B.Sc.</strong>, Nizam College (GPA 8.22)"
   },
   "experience": [
     {
-      "role": "Graduate Research Assistant",
-      "company": "Concordia University St. Paul",
-      "period": "Nov 2023 – Mar 2024",
+      "role": "AI/ML Engineer",
+      "company": "Microsoft, Redmond, WA",
+      "period": "July 2025 – Present",
       "bullets": [
-        "Achieved 88% accuracy by building a student retention prediction model using Python (Scikit-learn).",
-        "Co-authored a successful $50K grant proposal by researching AI ethics in healthcare.",
-        "Processed and analyzed large-scale social media text data (NLP, SpaCy, NLTK) to uncover sentiment patterns.",
-        "Designed Tableau dashboards to present findings on alum engagement, supporting strategic planning."
+        "Architected <strong>Agentic RAG pipelines</strong> for Microsoft 365 Business Copilots using <strong>Azure OpenAI (GPT-4o)</strong> and <strong>Semantic Kernel</strong>, enabling reasoning over <strong>10TB+</strong> of enterprise data with <strong>95%</strong> retrieval accuracy.",
+        "Optimized production inference at global scale by implementing high-performance vector indexing on <strong>Azure AI Search</strong> and <strong>Pinecone</strong>, achieving <strong>sub-200ms</strong> query latency for 50M+ documents.",
+        "Implemented robust <strong>AI Safety guardrails</strong> and CI/CD testing pipelines using <strong>Prompt Flow</strong> and <strong>Azure AI Content Safety</strong>, blocking 99% of adversarial attacks and ensuring Responsible AI alignment."
       ],
-      "tags": "Keywords: Retention, NLP, Grants"
+      "tags": "Keywords: Agentic RAG, GPT-4o, Semantic Kernel, Vector Search, AI Safety, Prompt Flow"
     },
     {
-      "role": "Data Scientist (Functioned as ML Engineer)",
+      "role": "Data Scientist",
+      "company": "Piper Sandler, USA",
+      "period": "Sep 2024 – July 2025",
+      "bullets": [
+        "Developed an <strong>Agentic NLP workflow</strong> using <strong>LangGraph</strong> on Azure ML Studio to summarize unstructured financial reports, reducing analyst time-to-insight by <strong>50%</strong>.",
+        "Modeled complex entity relationships using <strong>Graph Theory (Neo4j)</strong> and <strong>GraphRAG</strong>, statistically reducing hallucination rates in automated summaries compared to baseline vector-only approaches.",
+        "Designed <strong>Quantitative Trading Strategies</strong> using <strong>Reinforcement Learning</strong> agents on Azure Compute, demonstrating a <strong>15%</strong> increase in risk-adjusted returns (Sharpe Ratio)."
+      ],
+      "tags": "Keywords: LangGraph, GraphRAG, Neo4j, Reinforcement Learning, Azure ML"
+    },
+    {
+      "role": "Graduate Research Assistant",
+      "company": "Concordia University St. Paul",
+      "period": "Mar 2024 – Aug 2024",
+      "bullets": [
+        "Built a Student Retention System from scratch: engineered SQL pipelines in <strong>Amazon RDS</strong>, trained an <strong>XGBoost</strong> classifier (88% accuracy), and served predictions via a <strong>FastAPI</strong> endpoint on <strong>AWS EC2</strong>.",
+        "Deployed a scalable NLP pipeline using <strong>Docker</strong> containers on <strong>AWS Lambda</strong>, applying <strong>Hugging Face Transformers</strong> for real-time sentiment analysis of social media data."
+      ],
+      "tags": "Keywords: AWS Lambda, FastAPI, Docker, XGBoost, Hugging Face"
+    },
+    {
+      "role": "Data Scientist & ML Engineer",
       "company": "Infosys, India",
       "period": "Jun 2022 – Aug 2023",
       "bullets": [
-        "Served as an ML Engineer and Data Scientist on engagements with primary healthcare and financial services clients, delivering advanced AI/ML solutions.",
-        "Reduced patient readmissions by 12% by building and deploying a patient segmentation model (K-Means, DBSCAN) on claims data to enable targeted care programs.",
-        "Identified high-cost claimants with 85% accuracy by developing predictive models (XGBoost, Random Forest) on AWS SageMaker.",
-        "Improved patient risk scoring by applying BERT-based NLP to extract clinical entities from provider notes.",
-        "Engineered HIPAA-compliant ETL pipelines (AWS Glue) integrating claims, EHR, and pharmacy data.",
-        "Used GANs for synthetic data generation, supporting privacy-preserving healthcare analytics.",
-        "Explored Generative AI capabilities by building prototype LLM-based chatbot workflows and fine-tuning open-source transformer models.",
-        "Improved data pipeline efficiency by building agentic automation for ETL and anomaly detection using Databricks and Python.",
-        "Reduced data processing time by 30% by optimizing analysis pipelines in Databricks."
+        "Architected Big Data pipelines using <strong>Snowflake</strong> and <strong>PySpark</strong> on <strong>Azure Databricks</strong> to process TB-scale claims for <strong>5M+</strong> patients, and deployed a containerized <strong>BERT + XGBoost</strong> ensemble on <strong>Azure Kubernetes Service (AKS)</strong> via CI/CD.",
+        "Developed a Hybrid Fraud System combining <strong>PyTorch (LSTM)</strong> and <strong>Isolation Forest</strong> that reduced false positives by <strong>20%</strong>, optimizing inference latency to <strong><100ms</strong> using <strong>ONNX</strong> runtime for real-time detection.",
+        "Designed a centralized <strong>Feature Store</strong> on <strong>Databricks (Delta Lake)</strong> for financial indicators and ensured HIPAA compliance through PII masking and <strong>Azure Virtual Networks (VNet)</strong> isolation."
       ],
-      "tags": "Keywords: SageMaker, BERT, GANs, Databricks, AWS Glue, LLMs, Healthcare, FinTech"
+      "tags": "Keywords: Azure Databricks, PySpark, AKS, BERT, Feature Store, ONNX, Fraud Detection"
     },
     {
-      "role": "Data Analyst",
+      "role": "Data Analyst/Data Scientist",
       "company": "Twilight Software Solutions, Hyderabad, India",
-      "period": "Oct 2019 – Jun 2022",
+      "period": "April 2020 – May 2022",
       "bullets": [
-        "Strengthened model accuracy for churn and demand forecasting models by applying statistical methods and PCA for dimensionality reduction.",
-        "Supported all business intelligence reporting by building and managing scalable ETL pipelines and data warehouses.",
-        "Tracked critical business KPIs for leadership by developing and maintaining interactive dashboards in Tableau."
+        "Developed a Customer Churn Model using <strong>AWS SageMaker (XGBoost)</strong> that predicted attrition with <strong>85%</strong> accuracy, saving <strong>$1.5M</strong> in annual revenue, and automated ETL processes using <strong>Python</strong> and <strong>AWS S3</strong>.",
+        "Transformed operational reporting by applying <strong>Time-Series Forecasting (ARIMA/Prophet)</strong> to predict network congestion for proactive bandwidth allocation, and validated strategies via <strong>A/B Testing</strong> and <strong>ANOVA</strong> analysis presented in <strong>Tableau</strong>."
       ],
-      "tags": "Keywords: Churn, Forecasting, PCA, Tableau, BI"
+      "tags": "Keywords: AWS SageMaker, Churn Prediction, Time-Series Forecasting, A/B Testing, ETL"
     }
   ],
   "skills": {
-    "core": "Python · SQL · Java · R · Machine Learning · LLMs (GPT-4, Claude, LLaMA) · Generative AI · RAG · Agentic AI · Neo4j · Spark · Cloud (GCP · Azure · AWS) · Databricks",
+    "core": "Python · SQL · R · Machine Learning · Generative AI · Agentic RAG · Deep Learning · MLOps · Cloud (Azure · AWS · GCP) · Vector Databases",
     "tags": [
-      "PyTorch","TensorFlow","Keras","Scikit-learn","XGBoost","Spark MLlib","LangChain","LangGraph","Hugging Face","Model Context Protocol (MCP)","Stable Diffusion","DALL·E 2","Vertex AI","SageMaker","Azure ML","Azure Databricks","MLflow","Pandas","NumPy","REST APIs","ETL Pipelines","Feature Engineering","PCA","MySQL","BigQuery","Snowflake","Redshift","Regression","Hypothesis Testing","ANOVA","Bayesian Inference","Time Series","ARIMA","Prophet","K-means","DBSCAN","Hierarchical Clustering","NLP","BERT","SpaCy","NLTK","Information Retrieval","Reinforcement Learning","Recommendation Systems","CI/CD","Git","Unit Testing","Automation","Model Deployment","Model Monitoring","Tableau","Power BI","AWS QuickSight","Matplotlib","Seaborn","Interactive Dashboards","Data Storytelling","Cross-functional Collaboration","Leadership","Technical Communication","Innovation","Agile/Scrum","Mentorship"
+      "PyTorch","TensorFlow","Keras","XGBoost","Scikit-learn","Spark MLlib","LangChain","LangGraph","Hugging Face","Jupyter Notebooks","Pandas","NumPy","REST APIs","ETL Pipelines","Automation","Feature Engineering","PCA","MySQL","BigQuery","Snowflake","Redshift","Regression","Hypothesis Testing","ANOVA","Bayesian Inference","Time Series (ARIMA, Prophet)","Clustering (K-means, DBSCAN, Hierarchical)","CI/CD Pipelines","Git","Unit Testing","Model Deployment","Model Monitoring","AWS SageMaker","GCP Vertex AI","Azure AI","Databricks","Tableau","Power BI","AWS QuickSight","Matplotlib","Seaborn","Interactive Dashboards","Cross-functional Collaboration","Leadership","Technical Communication","Innovation","Agile/Scrum","Mentorship","Data Storytelling"
     ]
   },
   "projects": [
